@@ -1,0 +1,31 @@
+{
+  "name": "pipedrive-mcp-server",
+  "version": "1.0.0",
+  "description": "Model Context Protocol server for Pipedrive CRM integration",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js",
+    "test": "node dist/test.js",
+    "validate": "node dist/validate-api.js"
+  },
+  "keywords": [
+    "mcp",
+    "pipedrive",
+    "crm",
+    "recruitment"
+  ],
+  "author": "Wouter - Recruitin B.V.",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0",
+    "node-fetch": "^3.3.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0"
+  }
+}

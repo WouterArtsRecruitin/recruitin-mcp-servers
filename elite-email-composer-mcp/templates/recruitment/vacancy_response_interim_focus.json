@@ -1,0 +1,53 @@
+{
+  "template_id": "vacancy_response_interim_focus",
+  "category": "recruitment",
+  "subcategory": "vacancy_response",
+  "language": "nl",
+  "name": "Vacancy Response - Interim Focus",
+  "description": "Snelle interim-oplossing voor recruiter vacatures (simpeler pitch)",
+  "use_case": "Voor bedrijven die snel capaciteit nodig hebben, minder complex dan dual-option",
+  "tone": "professional",
+  "required_variables": [
+    "contact_name",
+    "company_name"
+  ],
+  "optional_variables": [
+    "calendly_link",
+    "phone",
+    "website"
+  ],
+  "subject_lines": [
+    "Corporate Recruiter interim beschikbaar voor {{company_name}}",
+    "Recruitment-capaciteit binnen 2 weken",
+    "Interim oplossing voor uw recruiter-vacature"
+  ],
+  "body": "Beste {{contact_name}},\n\nIk zie dat {{company_name}} een Corporate Recruiter zoekt. In plaats van maanden te zoeken, kunnen we direct ondersteuning bieden.\n\n**Interim Recruitment-oplossing:**\n✓ Ervaren recruiter beschikbaar binnen 1-2 weken\n✓ Flexibel (3-6 maanden, verlengbaar)\n✓ Direct productief in uw vacatures\n✓ Geen wervingskosten, transparant dagtarief\n\nDeze aanpak werkt goed wanneer:\n- U snel capaciteit nodig heeft\n- Recruitment-druk tijdelijk hoog is\n- U flexibiliteit wilt behouden\n\n**Interesse in korte toelichting?**\n→ {{calendly_link}} (15 min)\n\nOf graag direct contact? Bel me: {{phone}}\n\nGroet,\n\n**Wouter van der Linden**\nRecruitin B.V.\n📞 {{phone}}\n🌐 {{website}}\n\n---\nDeze email is verstuurd omdat {{company_name}} recent een vacature heeft gepubliceerd.\nGeen interesse? Reply met \"STOP\".",
+  "performance": {
+    "avg_open_rate": "40-44%",
+    "avg_reply_rate": "18-22%",
+    "avg_meeting_rate": "12-14%",
+    "best_send_time": "Within 24h of vacancy posting",
+    "conversion_type": "Reactive - Simple pitch",
+    "industry": "All - faster decision cycle"
+  },
+  "automation": {
+    "pipedrive_native": true,
+    "trigger_keywords": ["Recruiter", "Corporate Recruiter", "urgent"],
+    "source": "JobDigger export",
+    "recommended_use": "When vacancy mentions 'urgent' or 'direct beschikbaar'"
+  },
+  "gdpr_compliant": true,
+  "spam_score": "low",
+  "tags": [
+    "vacancy-response",
+    "interim",
+    "fast",
+    "simple-pitch"
+  ],
+  "related_templates": [
+    "vacancy_response_corporate_recruiter",
+    "followup_1_no_reply"
+  ],
+  "version": "1.0",
+  "last_updated": "2024-11-21"
+}

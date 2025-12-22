@@ -1,0 +1,33 @@
+# Render Blueprint Configuration
+# Labour Market Intelligence MCP Server
+
+services:
+  - type: web
+    name: lmi-webhook-server
+    runtime: node
+    plan: starter # Free tier
+    region: frankfurt # EU region
+    branch: main
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:http
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+    # Environment variables die je handmatig moet toevoegen in Render dashboard:
+    # - CLAUDE_API_KEY (je Anthropic API key)
+    # - NOTION_TOKEN (optioneel, voor Notion integration)
+    
+  - type: web
+    name: lmi-mcp-server
+    runtime: node
+    plan: starter
+    region: frankfurt
+    branch: main
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Note: MCP server draait op stdio, niet HTTP

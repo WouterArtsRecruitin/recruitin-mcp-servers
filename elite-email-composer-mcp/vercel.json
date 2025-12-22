@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "name": "recruitin-webhook-relay",
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "routes": [
+    {
+      "src": "/webhook/new-deal",
+      "dest": "/api/webhook/new-deal"
+    },
+    {
+      "src": "/health",
+      "dest": "/api/health"
+    },
+    {
+      "src": "/",
+      "dest": "/api/health"
+    }
+  ],
+  "env": {
+    "PIPEDRIVE_API_TOKEN": "@pipedrive_api_token"
+  }
+}

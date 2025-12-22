@@ -1,0 +1,103 @@
+{
+  "template_id": "vacancy_response_corporate_recruiter",
+  "category": "recruitment",
+  "subcategory": "vacancy_response",
+  "language": "nl",
+  "name": "Vacancy Response - Corporate Recruiter (JobDigger)",
+  "description": "Reactive email voor bedrijven met recruiter-vacature uit JobDigger export",
+  "use_case": "Source: JobDigger export, vacature type: Corporate Recruiter, Recruiter, Technical Recruiter. Dual-option pitch (interim + RPO).",
+  "tone": "professional",
+  "required_variables": [
+    "contact_name",
+    "company_name"
+  ],
+  "optional_variables": [
+    "calendly_link",
+    "phone",
+    "website"
+  ],
+  "pipedrive_variables": {
+    "person_name": "{{person.name}}",
+    "organization_name": "{{organization.name}}",
+    "owner_name": "{{owner.name}}",
+    "owner_email": "{{owner.email}}",
+    "owner_phone": "{{owner.phone}}"
+  },
+  "subject_lines": [
+    "Recruitment-capaciteit voor {{company_name}}",
+    "Corporate Recruiter interim of RPO-oplossing",
+    "Alternatief voor uw recruiter-vacature"
+  ],
+  "body": "Beste {{contact_name}},\n\nIk zie dat {{company_name}} op zoek is naar een Corporate Recruiter. In plaats van maanden te zoeken naar de juiste kandidaat, zijn er snellere oplossingen om uw recruitment-capaciteit direct te verhogen.\n\n**Twee opties:**\n\n**OPTIE 1: INTERIM RECRUITER (flexibel, direct inzetbaar)**\n✓ Ervaren technical recruiter beschikbaar binnen 1-2 weken\n✓ Minimaal 3-6 maanden inzet (flexibel verlengbaar)\n✓ Volledig ingewerkt in uw systemen en vacatures\n✓ Geen wervingskosten, alleen dagtarief\n\n**OPTIE 2: RPO (recruitment volledig uitbesteden)**\n✓ Dedicated recruitment team (zonder FTE)\n✓ Wij werven alle vacatures (niet alleen 1 recruiter zoeken)\n✓ 30-50% snellere time-to-hire\n✓ Transparante maandelijkse fee\n\n**Welke optie past beter bij {{company_name}}?**\n\nLaten we kort sparren (15 minuten):\n→ {{calendly_link}}\n\nOf graag direct contact? Bel me: {{phone}}\n\nMet vriendelijke groet,\n\n**Wouter van der Linden**\nRecruitin B.V.\n📞 {{phone}}\n🌐 {{website}}\n\nP.S. Beide oplossingen zijn direct beschikbaar - afhankelijk van uw situatie adviseren we de beste match.\n\n---\nDeze email is verstuurd omdat {{company_name}} recent een vacature heeft gepubliceerd.\nGeen interesse? Reply met \"STOP\".\n\nPrivacy: recruitin.nl/privacy",
+  "performance": {
+    "avg_open_rate": "38-42%",
+    "avg_reply_rate": "15-20%",
+    "avg_meeting_rate": "10-12%",
+    "best_send_time": "Within 24h of vacancy posting",
+    "conversion_type": "Reactive (vacancy response)",
+    "industry": "All - triggered by recruiter vacancy"
+  },
+  "automation": {
+    "pipedrive_native": true,
+    "zapier_compatible": true,
+    "trigger_keywords": ["Corporate Recruiter", "Recruiter", "Technical Recruiter", "Talent Acquisition"],
+    "source": "JobDigger export",
+    "recommended_delay": "0-24 hours (fast response critical)",
+    "follow_up_sequence": ["followup_1_no_reply", "followup_engaged_no_meeting"]
+  },
+  "gdpr_compliant": true,
+  "spam_score": "low",
+  "spam_triggers_avoided": [
+    "No excessive capitalization",
+    "Professional sender",
+    "Clear opt-out",
+    "Legitimate interest (public vacancy)",
+    "Privacy link included"
+  ],
+  "tags": [
+    "vacancy-response",
+    "reactive",
+    "jobdigger",
+    "interim",
+    "rpo",
+    "recruiter",
+    "fast-response"
+  ],
+  "related_templates": [
+    "cold_tech_mkb",
+    "cold_enterprise_rpo",
+    "followup_1_no_reply"
+  ],
+  "pipedrive_setup": {
+    "automation_workflow": {
+      "trigger": "New deal created with source=JobDigger AND title contains 'Recruiter'",
+      "conditions": [
+        "Person email exists",
+        "Organization name exists",
+        "Deal stage = Lead or New"
+      ],
+      "actions": [
+        "Wait 10 minutes",
+        "Send email from template",
+        "Add activity: 'Sent vacancy response email'",
+        "Update deal stage to 'Email Sent'",
+        "Create follow-up activity (Day 3)"
+      ]
+    },
+    "custom_fields_recommended": [
+      "vacancy_source: JobDigger",
+      "vacancy_type: Corporate Recruiter",
+      "response_speed: <24h",
+      "solution_interest: Interim/RPO/Both"
+    ]
+  },
+  "ab_test_variants": {
+    "subject_a": "Recruitment-capaciteit voor {{company_name}}",
+    "subject_b": "Corporate Recruiter interim binnen 2 weken",
+    "subject_c": "Alternatief voor uw recruiter-vacature",
+    "recommended_winner": "subject_a (expected 38% open rate)"
+  },
+  "version": "1.0",
+  "last_updated": "2024-11-21",
+  "notes": "Reactive template with higher expected conversion due to immediate pain point. Speed of response critical (within 24h of vacancy posting). Dual-option approach (interim + RPO) increases meeting conversion."
+}

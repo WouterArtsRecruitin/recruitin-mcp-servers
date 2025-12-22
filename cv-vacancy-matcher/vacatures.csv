@@ -1,0 +1,11 @@
+id;functietitel;bedrijfsnaam;locatie;skills;salaris_min;salaris_max;contact_voornaam;contact_achternaam;contact_email;vacature_url
+1;Ploegleider Productie;ASML;Veldhoven;leiderschap,productie,lean,six-sigma;55000;70000;Sandra;Vermeulen;s.vermeulen@asml.com;https://asml.com/jobs/1
+2;Teamleider Assemblage;Philips;Eindhoven;teamleider,assemblage,kwaliteit,procesoptimalisatie;50000;65000;Marc;de Jong;m.dejong@philips.com;https://philips.com/jobs/2
+3;Production Supervisor;VDL;Eindhoven;supervisor,manufacturing,planning,logistiek;48000;60000;Lisa;Peters;l.peters@vdl.nl;https://vdl.nl/jobs/3
+4;Process Engineer;ASML;Veldhoven;engineer,lean,six-sigma,procesverbetering;60000;80000;Tom;Bakker;t.bakker@asml.com;https://asml.com/jobs/4
+5;Operations Manager;Vanderlande;Veghel;operations,lean,management,supply-chain;65000;85000;Erik;Mulder;e.mulder@vanderlande.com;https://vanderlande.com/jobs/5
+6;Werkvoorbereider;DAF Trucks;Eindhoven;werkvoorbereiding,planning,technische tekeningen;45000;55000;Karin;Jansen;k.jansen@daf.com;https://daf.com/jobs/6
+7;Quality Engineer;NXP;Nijmegen;kwaliteit,iso,six-sigma,auditing;50000;65000;Peter;van Dijk;p.vandijk@nxp.com;https://nxp.com/jobs/7
+8;Maintenance Supervisor;Shell;Rotterdam;onderhoud,leiderschap,veiligheid,techniek;58000;72000;Anne;de Vries;a.devries@shell.com;https://shell.com/jobs/8
+9;Logistiek Teamleider;Amazon;Tilburg;logistiek,teamleiding,warehouse,kpi;45000;58000;Johan;Smit;j.smit@amazon.com;https://amazon.com/jobs/9
+10;Plant Manager;Heineken;Den Bosch;management,productie,continuous improvement;75000;95000;Robert;Visser;r.visser@heineken.com;https://heineken.com/jobs/10

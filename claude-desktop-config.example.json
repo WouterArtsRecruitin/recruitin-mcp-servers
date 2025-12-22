@@ -1,0 +1,62 @@
+{
+  "mcpServers": {
+    "cv-parser": {
+      "command": "python3",
+      "args": ["./cv-parser/server.py"],
+      "env": {
+        "HF_TOKEN": "your-huggingface-token"
+      }
+    },
+    "cv-vacancy-matcher": {
+      "command": "python3",
+      "args": ["./cv-vacancy-matcher/server.py"],
+      "env": {
+        "HF_TOKEN": "your-huggingface-token"
+      }
+    },
+    "pipedrive": {
+      "command": "node",
+      "args": ["./pipedrive/dist/index.js"],
+      "env": {
+        "PIPEDRIVE_API_TOKEN": "your-pipedrive-token",
+        "PIPEDRIVE_COMPANY_DOMAIN": "your-company"
+      }
+    },
+    "resend": {
+      "command": "node",
+      "args": ["./resend-mcp-server/index.js"],
+      "env": {
+        "RESEND_API_KEY": "your-resend-key"
+      }
+    },
+    "brave-search": {
+      "command": "node",
+      "args": ["./brave-search-mcp-server.js"],
+      "env": {
+        "BRAVE_API_KEY": "your-brave-key"
+      }
+    },
+    "company-insights": {
+      "command": "node",
+      "args": ["./company-insights-agent.js"]
+    },
+    "vacancy-analysis": {
+      "command": "node",
+      "args": ["./vacancy-analysis-agent.js"]
+    },
+    "notion": {
+      "command": "node",
+      "args": ["./notion-mcp-server.js"],
+      "env": {
+        "NOTION_API_KEY": "your-notion-key"
+      }
+    },
+    "slack": {
+      "command": "node",
+      "args": ["./slack-mcp-server.js"],
+      "env": {
+        "SLACK_BOT_TOKEN": "your-slack-token"
+      }
+    }
+  }
+}

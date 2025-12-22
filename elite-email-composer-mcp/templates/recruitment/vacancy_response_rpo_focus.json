@@ -1,0 +1,55 @@
+{
+  "template_id": "vacancy_response_rpo_focus",
+  "category": "recruitment",
+  "subcategory": "vacancy_response",
+  "language": "nl",
+  "name": "Vacancy Response - RPO Focus",
+  "description": "RPO-pitch als alternatief voor recruiter-vacature (structurele oplossing)",
+  "use_case": "Voor bedrijven met structurele capaciteitsvraag, niet alleen 1 vacature",
+  "tone": "consultative",
+  "required_variables": [
+    "contact_name",
+    "company_name"
+  ],
+  "optional_variables": [
+    "calendly_link",
+    "phone",
+    "website"
+  ],
+  "subject_lines": [
+    "Alternatief voor uw recruiter-vacature",
+    "Structurele oplossing recruitment-capaciteit",
+    "RPO als alternatief voor recruiter in dienst"
+  ],
+  "body": "Beste {{contact_name}},\n\nIk zie dat {{company_name}} een Corporate Recruiter zoekt. Vraag: is dit symptoom van een groter probleem? Namelijk: structureel te weinig recruitment-capaciteit?\n\n**Alternatief: RPO (Recruitment Process Outsourcing)**\n\nIn plaats van 1 recruiter zoeken, nemen wij uw recruitment over:\n✓ Dedicated team (geen FTE nodig)\n✓ Flexibel schaalbaar (10 of 50 vacatures)\n✓ 30-50% snellere time-to-hire\n✓ Vaste maandelijkse fee (voorspelbaar budget)\n\n**Resultaat:** U lost niet alleen de recruiter-vacature op, maar ook de achterliggende capaciteitsvraag.\n\n**Wanneer past RPO beter dan een recruiter in dienst?**\n- Bij structurele wervingsbehoefte (>10 vacatures/jaar)\n- Wanneer flexibiliteit belangrijk is (schaalbaar op/af)\n- Als cost-per-hire moet dalen\n- Bij gebrek aan interne recruitment-expertise\n\n**Past dit beter bij {{company_name}}?**\n→ {{calendly_link}} (20 min)\n\nGroet,\n\n**Wouter van der Linden**\nDGA | Recruitin B.V.\n📞 {{phone}} | 🌐 {{website}}\n\nP.S. We kunnen beide oplossingen vergelijken in een kort gesprek - inclusief ROI-berekening voor uw situatie.\n\n---\nDeze email is verstuurd omdat {{company_name}} recent een vacature heeft gepubliceerd.\nGeen interesse? Reply met \"STOP\".",
+  "performance": {
+    "avg_open_rate": "35-38%",
+    "avg_reply_rate": "12-16%",
+    "avg_meeting_rate": "8-10%",
+    "best_send_time": "Within 48h of vacancy posting",
+    "conversion_type": "Reactive - Consultative approach",
+    "industry": "Best for: Scale-ups, growing companies",
+    "deal_size": "Higher (RPO contracts €50k-€200k/year)"
+  },
+  "automation": {
+    "pipedrive_native": true,
+    "trigger_keywords": ["multiple vacancies", "growing team", "scale"],
+    "source": "JobDigger export",
+    "recommended_use": "When company has >10 open vacancies or mentions growth"
+  },
+  "gdpr_compliant": true,
+  "spam_score": "low",
+  "tags": [
+    "vacancy-response",
+    "rpo",
+    "structural",
+    "consultative"
+  ],
+  "related_templates": [
+    "vacancy_response_corporate_recruiter",
+    "cold_enterprise_rpo",
+    "rpo_demo_invitation"
+  ],
+  "version": "1.0",
+  "last_updated": "2024-11-21"
+}

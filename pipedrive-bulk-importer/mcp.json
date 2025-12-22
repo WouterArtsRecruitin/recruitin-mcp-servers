@@ -1,0 +1,161 @@
+{
+  "name": "pipedrive-bulk-importer",
+  "version": "1.0.0",
+  "description": "Bulk import Google Sheets data into Pipedrive with smart deduplication and validation",
+  "author": "Wouter Arts - Recruitin B.V.",
+  "license": "MIT",
+  "main": "server.py",
+  "tools": [
+    {
+      "name": "import_from_google_sheet",
+      "description": "Import data from Google Sheets into Pipedrive. Creates Organizations, Persons, and Deals with smart deduplication. Perfect for bulk JobDigger imports.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "spreadsheet_id": {
+            "type": "string",
+            "description": "Google Sheets spreadsheet ID (from URL)"
+          },
+          "worksheet_name": {
+            "type": "string",
+            "description": "Name of the worksheet to import",
+            "default": "Voor_Pipedrive"
+          },
+          "max_rows": {
+            "type": ["integer", "null"],
+            "description": "Maximum rows to import (null = all). Use 5 for testing.",
+            "default": null
+          },
+          "skip_invalid": {
+            "type": "boolean",
+            "description": "Skip rows with validation errors instead of stopping",
+            "default": true
+          },
+          "test_mode": {
+            "type": "boolean",
+            "description": "Test mode: import but mark as test data for easy cleanup",
+            "default": false
+          }
+        },
+        "required": ["spreadsheet_id"]
+      }
+    },
+    {
+      "name": "validate_before_import",
+      "description": "Validate Google Sheets data before importing. Checks for missing fields, invalid emails, duplicates. Always run this before bulk imports!",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "spreadsheet_id": {
+            "type": "string",
+            "description": "Google Sheets spreadsheet ID"
+          },
+          "worksheet_name": {
+            "type": "string",
+            "description": "Worksheet name",
+            "default": "Voor_Pipedrive"
+          },
+          "max_rows": {
+            "type": ["integer", "null"],
+            "description": "Validate first N rows (null = all)",
+            "default": null
+          }
+        },
+        "required": ["spreadsheet_id"]
+      }
+    },
+    {
+      "name": "preview_import",
+      "description": "Dry-run preview of what will be imported. Shows counts without actually creating anything in Pipedrive.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "spreadsheet_id": {
+            "type": "string",
+            "description": "Google Sheets spreadsheet ID"
+          },
+          "worksheet_name": {
+            "type": "string",
+            "description": "Worksheet name",
+            "default": "Voor_Pipedrive"
+          },
+          "max_rows": {
+            "type": ["integer", "null"],
+            "description": "Preview first N rows",
+            "default": 10
+          }
+        },
+        "required": ["spreadsheet_id"]
+      }
+    },
+    {
+      "name": "get_import_status",
+      "description": "Get status of a running or completed import job. Shows progress, errors, and results.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string",
+            "description": "Import job ID (returned from import_from_google_sheet)"
+          }
+        },
+        "required": ["job_id"]
+      }
+    },
+    {
+      "name": "list_recent_imports",
+      "description": "List recent import jobs with their status and results",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "description": "Number of recent imports to show",
+            "default": 10
+          }
+        }
+      }
+    },
+    {
+      "name": "dedupe_check",
+      "description": "Check for potential duplicates in Google Sheets data before importing. Shows which orgs/persons already exist in Pipedrive.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "spreadsheet_id": {
+            "type": "string",
+            "description": "Google Sheets spreadsheet ID"
+          },
+          "worksheet_name": {
+            "type": "string",
+            "description": "Worksheet name",
+            "default": "Voor_Pipedrive"
+          }
+        },
+        "required": ["spreadsheet_id"]
+      }
+    }
+  ],
+  "config": {
+    "pipedrive_api_key": {
+      "type": "string",
+      "description": "Pipedrive API key (from https://recruitin-b-v.pipedrive.com/settings/api)",
+      "required": true
+    },
+    "default_pipeline_id": {
+      "type": "integer",
+      "description": "Default pipeline ID for deals",
+      "default": 14
+    },
+    "default_stage_id": {
+      "type": "integer",
+      "description": "Default stage ID for deals",
+      "default": 95
+    },
+    "rate_limit_delay": {
+      "type": "number",
+      "description": "Delay between API calls (seconds)",
+      "default": 0.2
+    }
+  }
+}

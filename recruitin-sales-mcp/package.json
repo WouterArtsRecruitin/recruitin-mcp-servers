@@ -1,0 +1,17 @@
+{
+  "name": "recruitin-sales-mcp",
+  "version": "1.0.0",
+  "description": "MCP server voor Recruitin sales workflow",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "recruitin-sales-mcp": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "axios": "^1.6.0"
+  }
+}
