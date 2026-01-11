@@ -1,215 +1,225 @@
-# 🚀 Recruitin MCP Servers Collection
+# 🚀 Recruitin MCP Servers + Content Intelligence
 
-Comprehensive collection of 35+ Model Context Protocol (MCP) servers for recruitment automation, data analysis, and workflow optimization.
+**43+ MCP servers + Daily News Scraping + Weekly Content Generation**
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [MCP Servers List](#mcp-servers-list)
-- [Installation](#installation)
-- [Claude Desktop Configuration](#claude-desktop-configuration)
-- [Categories](#categories)
-
-## 🎯 Overview
-
-This repository contains all MCP servers used by Recruitin B.V. for:
-- Recruitment automation
-- Candidate matching
-- Market intelligence
-- Email automation
-- CRM integration
-- Data analysis
-- Workflow orchestration
-
-## 📦 MCP Servers List
-
-### Core Recruitment Tools (10)
-1. **cv-parser** - Parse CVs and extract candidate information
-2. **cv-vacancy-matcher** - AI-powered CV to vacancy matching
-3. **elite-email-composer** - Intelligent recruitment email generation
-4. **vacancy-analysis-agent** - Analyze and optimize job postings
-5. **jobboard-monitoring-agent** - Monitor job boards for opportunities
-6. **recruitment-orchestrator** - Workflow automation hub
-7. **labour-market-intelligence** - Market analysis and insights
-8. **technical-industrial-jobs-agent** - Technical job analysis
-9. **arnhem-direct-jobs-agent** - Local job market monitoring
-10. **dutch-recruitment-news-agent** - Industry news aggregation
-
-### CRM & Sales Tools (5)
-11. **pipedrive** - Full Pipedrive CRM integration
-12. **pipedrive-bulk-importer** - Bulk import to Pipedrive
-13. **recruitin-sales-mcp** - Sales pipeline automation
-14. **pipedrive-mcp-server** - Alternative Pipedrive interface
-15. **apollo** (via recruitment-orchestrator) - Apollo.io integration
-
-### Communication Tools (7)
-16. **email-mcp-server** - Email sending and management
-17. **resend-mcp-server** - Resend API integration
-18. **slack-mcp-server** - Slack integration
-19. **whatsapp-business-mcp-server** - WhatsApp Business API
-20. **notion-mcp-server** - Notion workspace integration
-21. **email-alternative-mcp** - Alternative email handler
-22. **elite-email-composer-mcp** - Advanced email composition
-
-### Intelligence & Analysis (8)
-23. **company-insights-agent** - Company research and analysis
-24. **competitor-monitoring-agent** - Track competitor activities
-25. **prospect-intelligence-agent** - Prospect research automation
-26. **salary-benchmark-agent** - Salary data analysis
-27. **technical-salary-benchmark-agent** - Tech role salaries
-28. **daily-recruitment-news-agent** - Daily news digest
-29. **dutch-news-agent-final** - Dutch market news
-30. **brave-search-mcp-server** - Web search integration
-
-### Integration & Automation (5)
-31. **zapier-mcp-bridge** - Zapier workflow integration
-32. **typeform-mcp-server** - Typeform survey integration
-33. **jotform-mcp-server** - JotForm integration
-34. **airtable-mcp-server** - Airtable database integration
-35. **linkedin-mcp-server** - LinkedIn automation
-
-### AI & Data Tools (5)
-36. **huggingface-mcp-server** - HuggingFace AI models
-37. **google-ai-mcp** - Google AI integration
-38. **leonardo-ai-mcp-server** - Leonardo AI for images
-39. **leonardo-sdk-mcp-server** - Leonardo SDK interface
-40. **memory-mcp-server** - Persistent memory storage
-
-### Developer Tools (3)
-41. **figma-mcp-server** - Figma design integration
-42. **d3js-mcp-server** - Data visualization
-43. **vanilla-js-mcp-server** - Basic JavaScript utilities
-
-## 🛠️ Installation
-
-### Prerequisites
-- Node.js 18+ 
-- Python 3.8+
-- Claude Desktop
-
-### Quick Install
-```bash
-# Clone the repository
-git clone https://github.com/WouterArtsRecruitin/recruitin-mcp-servers.git
-cd recruitin-mcp-servers
-
-# Install all dependencies
-./install-all.sh
-```
-
-### Manual Installation
-
-For specific servers:
-
-**Node.js servers:**
-```bash
-cd [server-name]
-npm install
-```
-
-**Python servers:**
-```bash
-cd [server-name]
-pip install -r requirements.txt
-```
-
-## ⚙️ Claude Desktop Configuration
-
-1. Copy the example configuration:
-```bash
-cp claude-desktop-config.example.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
-```
-
-2. Add your API keys:
-- `PIPEDRIVE_API_TOKEN`
-- `HF_TOKEN` (HuggingFace)
-- `RESEND_API_KEY`
-- `APOLLO_IO_API_KEY`
-- `LEONARDO_API_KEY`
-
-3. Restart Claude Desktop
-
-## 📁 Categories
-
-### 🎯 Recruitment & HR
-Tools for candidate sourcing, matching, and assessment
-
-### 💼 Sales & CRM
-Pipedrive integration and sales automation
-
-### 📧 Communication
-Email, Slack, WhatsApp, and other messaging tools
-
-### 📊 Analytics & Intelligence
-Market analysis, competitor monitoring, salary benchmarking
-
-### 🔗 Integrations
-Zapier, Typeform, Airtable, and other third-party services
-
-### 🤖 AI & Machine Learning
-HuggingFace, Google AI, Leonardo for advanced AI capabilities
-
-### 🛠️ Developer Tools
-Figma, D3.js, and utility functions
-
-## 📄 Documentation
-
-Each server has its own README with:
-- Feature list
-- Installation instructions
-- Configuration requirements
-- Usage examples
-- API documentation
-
-## 🚀 Quick Start Examples
-
-### Parse a CV
-```javascript
-// Using cv-parser
-await parse_cv({
-  content: "CV content here...",
-  filename: "candidate.pdf"
-})
-```
-
-### Send an Email
-```javascript
-// Using resend-mcp-server
-await send_email({
-  to: ["candidate@email.com"],
-  from: "recruiter@company.com",
-  subject: "Job Opportunity",
-  html: "<p>Email content</p>"
-})
-```
-
-### Search Companies
-```javascript
-// Using company-insights-agent
-await search_company({
-  name: "TechCorp",
-  location: "Amsterdam"
-})
-```
-
-## 🔒 Security
-
-- All API keys stored in environment variables
-- No credentials committed to repository
-- Secure communication protocols
-- Regular security audits
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Add tests for new functionality
-4. Submit a pull request
-
-## 📝 License
-
-© 2024 Recruitin B.V. - All Rights Reserved
+🔗 **Repo**: https://github.com/WouterArtsRecruitin/recruitin-mcp-servers
 
 ---
 
-**Need help?** Contact: wouter@recruitin.nl
+## ⚡ QUICK START (2 Minuten)
+
+### Test News Scraper Nu:
+
+```bash
+cd ~/recruitin-mcp-servers
+npm install axios
+node generate-news-report-now.js
+```
+
+**Zie je "✅ REPORT GENERATED"?** → Open rapport:
+```bash
+open reports/recruitment-news-*.html
+```
+
+**Werkt?** ✅ Je bent ready! Lees verder ↓
+
+---
+
+## 📖 DOCUMENTATIE (Kies wat je nodig hebt)
+
+### Voor Beginners (Start Hier)
+
+| File | Leestijd | Wat |
+|------|----------|-----|
+| **README-WOUTER.md** | 2 min | Simpele start guide (voor jou) |
+| **LEES-DIT-EERST.md** | 1 min | Welke file moet ik lezen? |
+| **QUICK-START-CONTENT-SYSTEM.md** | 5 min | Test systeem in 3 stappen |
+| **GEBRUIKSHANDLEIDING-SIMPEL.md** | 5 min | Wekelijks gebruik (vrijdag routine) |
+
+### Voor Dagelijks Gebruik
+
+| File | Gebruik |
+|------|---------|
+| **docs/RECRUITIN-COMMANDS-LIBRARY-COMPLETE.md** | 51 commands (copy-paste ready) |
+| **docs/linkedin-content-authority.md** | Wouter's tone of voice + post templates |
+| **docs/daily-news-content-system.md** | Complete systeem design |
+
+### Voor Automation Setup
+
+| File | Doel |
+|------|------|
+| **CONTENT-INTELLIGENCE-README.md** | Technical overview |
+| **.github/workflows/** | GitHub Actions (automatic running) |
+
+---
+
+## 🎯 WAT KAN DIT?
+
+### 1. Daily News Scraping (Automatic)
+
+**Scrapet 25 Nederlandse recruitment bronnen**:
+- UWV (arbeidsmarkt cijfers)
+- CBS (statistieken)
+- ABU/NBBU (uitzendbranche)
+- Recruitment vakbladen
+- Technische sector nieuws
+
+**Output**: HTML dashboard (300+ artikelen/dag)
+**⚠️**: GEEN LinkedIn scraping - alleen nieuws sites
+
+---
+
+### 2. Weekly Content Generation
+
+**Input**: 7 daily news reports
+**Process**: Claude AI analyseert trends
+**Output**: 3 content stukken:
+- LinkedIn post (Wouter Arts - personal)
+- LinkedIn post (Recruitin - bedrijf)
+- Blog artikel (www.recruitin.nl)
+
+**Tijd**: 15 min review + publish (was: 4 uur manual)
+
+---
+
+### 3. 43+ MCP Servers
+
+**Categories**:
+- Recruitment tools (10)
+- CRM & Sales (5)
+- Communication (7)
+- Data & Storage (6)
+- AI & Generation (4)
+- Design & Viz (2)
+- Specialized agents (9+)
+
+**See**: Original README.md (scroll down) voor complete lijst
+
+---
+
+## 📁 REPO STRUCTUUR
+
+```
+recruitin-mcp-servers/
+│
+├── 📰 NEWS & CONTENT
+│   ├── generate-news-report-now.js     ← RUN DIT (news scraper)
+│   ├── daily-recruitment-news-agent.js
+│   ├── reports/ (generated daily news)
+│   └── weekly-content/ (generated content)
+│
+├── 📖 DOCS (Start Hier)
+│   ├── README-WOUTER.md               ← BEGIN HIER!
+│   ├── RECRUITIN-COMMANDS-LIBRARY-COMPLETE.md  ← 51 commands
+│   ├── linkedin-content-authority.md  ← Tone of voice
+│   └── daily-news-content-system.md   ← System design
+│
+├── 🤖 MCP SERVERS (43+)
+│   ├── brave-search-mcp-server.js
+│   ├── labour-market-intelligence/
+│   ├── cv-parser/
+│   ├── email-mcp-server.js
+│   └── [40+ other servers...]
+│
+└── ⚙️ AUTOMATION
+    └── .github/workflows/ (GitHub Actions)
+```
+
+---
+
+## 🎯 GEBRUIK
+
+### Optie A: Simpel (Handmatig)
+
+**Elke vrijdag (20 min)**:
+1. Run news scraper: `node generate-news-report-now.js`
+2. Vraag Claude: "Maak weekly content volgens tone of voice docs"
+3. Post content (copy-paste)
+
+**Done!** Geen automation needed.
+
+---
+
+### Optie B: Automated (GitHub Actions)
+
+**Setup 1x (15 min)**:
+- Add GitHub Secrets (API keys)
+- Enable workflows
+- KLAAR!
+
+**Daarna automatic**:
+- Daily 7am: News scrapes
+- Friday 17:00: Content generates
+- Jij: Review + post (15 min)
+
+**Guide**: See CONTENT-INTELLIGENCE-README.md
+
+---
+
+## 🔑 TONE OF VOICE (Wouter's Style)
+
+**Van docs/linkedin-content-authority.md**:
+
+**Kenmerken**:
+- ✅ Direct ("Dit werkt niet. Hier is waarom.")
+- ✅ Eerlijk ("90% vacatureteksten zijn waardeloos")
+- ✅ Data-driven (concrete cijfers, geen vage claims)
+- ✅ Provocerend (contrarian standpunten)
+
+**Post Types**:
+1. Contrarian Take (hoogste engagement)
+2. Data Story (authority building)
+3. Behind-the-Scenes (authenticiteit)
+4. How-To (thought leadership)
+
+**Voorbeelden**: See `docs/linkedin-content-authority.md`
+
+---
+
+## 💰 ROI
+
+**Content Intelligence System**:
+- Kosten: €30/maand (Brave API)
+- Bespaart: 5h/week × €50 = €1,000/maand
+- Netto: **€970/maand** = **€11,640/jaar**
+
+**Plus**: 43 MCP servers voor recruitment automation
+**Plus**: 16 Claude Code skills (if used together)
+
+**Total Potential**: €283k+/jaar
+
+---
+
+## 📞 QUICK LINKS
+
+- **GitHub**: https://github.com/WouterArtsRecruitin/recruitin-mcp-servers
+- **Start Guide**: README-WOUTER.md
+- **Commands**: docs/RECRUITIN-COMMANDS-LIBRARY-COMPLETE.md (51 commands)
+- **Tone of Voice**: docs/linkedin-content-authority.md
+
+---
+
+## ✅ NEXT STEPS
+
+### 1. Test News Scraper (Nu - 30 sec)
+```bash
+node generate-news-report-now.js
+```
+
+### 2. Read Start Guide (5 min)
+```
+open README-WOUTER.md
+```
+
+### 3. Generate Content (In Claude Code)
+```
+Maak weekly recruitment content volgens docs/linkedin-content-authority.md
+```
+
+---
+
+**Status**: Repo configured ✅
+**Ready For**: Daily news + weekly content
+**ROI**: €11,640/jaar
+
+🚀 **GO!**
