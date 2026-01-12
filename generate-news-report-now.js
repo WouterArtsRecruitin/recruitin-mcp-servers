@@ -10,59 +10,58 @@ const path = require('path');
 const BRAVE_API_KEY = process.env.BRAVE_API_KEY || 'BSARdxCQWTc2qwf41D9nweSyzfBzf6B';
 const BRAVE_API_URL = 'https://api.search.brave.com/res/v1/web/search';
 
-// ALLEEN Nederlandse recruitment & werkgelegenheid bronnen
+// FOCUS: TECHNICAL RECRUITMENT (Automation, Engineering, Manufacturing)
 const SEARCH_QUERIES = [
-  // Nederlandse RPO & Staffing (RPO = Recruitment Process Outsourcing)
-  '"recruitment process outsourcing" Nederland site:nl',
-  'RPO recruitment dienstverlening Nederland -omroep site:nl',
-  'staffing bureau Nederland site:nl',
-  'detachering payroll Nederland site:nl',
+  // Technical Recruitment Specifiek
+  'technical recruitment Nederland trends site:nl',
+  'engineering recruitment Nederland site:nl',
+  'technisch personeel tekort Nederland site:nl',
+  'automation engineer arbeidsmarkt Nederland site:nl',
 
-  // Nederlandse ATS & Recruitment Tech
-  'ATS software Nederlandse markt site:nl',
-  'recruitment software Nederland site:nl',
-  'HR tech Nederland site:nl',
+  // Manufacturing & Industrial Sector
+  'site:technischwerken.nl personeelstekort',
+  'site:engineeringnet.nl recruitment nieuws',
+  'site:technieknederland.nl arbeidsmarkt',
+  'manufacturing recruitment Nederland site:nl',
+  'industrial recruitment trends Nederland site:nl',
 
-  // Nederlandse Recruitment Marketing
-  'recruitment marketing Nederlandse bedrijven site:nl',
-  'employer branding Nederland site:nl',
-  'werving en selectie Nederland site:nl',
+  // Technical Skills & Arbeidsmarkt
+  'PLC programmeur arbeidsmarkt Nederland site:nl',
+  'SCADA specialist tekort Nederland site:nl',
+  'automation techniek personeelstekort site:nl',
+  'werktuigbouwkundig engineer markt site:nl',
+  'elektrotechniek personeelstekort Nederland site:nl',
 
-  // Uitzendbranche specifiek
-  'site:abu.nl uitzendbranche nieuws actueel',
-  'site:nbbu.nl flexbranche ontwikkelingen',
-  'site:flexnieuws.nl uitzendmarkt Nederland',
+  // UWV & CBS - Technical Sector Focus
+  'site:uwv.nl technische beroepen arbeidsmarkt',
+  'site:uwv.nl moeilijk vervulbare vacatures techniek',
+  'site:cbs.nl vacatures technische sector',
+  'site:cbs.nl spanning arbeidsmarkt industrie',
 
-  // UWV & CBS - werkgelegenheid cijfers
-  'site:uwv.nl arbeidsmarkt nieuwsflits',
-  'site:uwv.nl moeilijk vervulbare vacatures',
-  'site:cbs.nl vacatures werkloosheid cijfers',
-  'site:cbs.nl spanning arbeidsmarkt',
-
-  // Recruitment vakbladen & platforms
-  'site:recruitmentmatters.nl laatste nieuws',
-  'site:werf-en.nl recruitment trends',
-  'site:recruitmenttech.nl recruitment technologie',
+  // Recruitment Tech (AI, automation tools)
   'site:recruitmenttech.nl AI recruitment',
-  'site:intermediair.nl uitzendbranche nieuws',
-  '"intelligence group" arbeidsmarkt nederland site:nl',
-  'site:intelligencegroup.nl arbeidsmarkt rapport',
+  'site:recruitmenttech.nl automation recruitment',
+  'recruitment automation Nederland site:nl',
 
-  // Arbeidsmarkt nieuws
-  'site:fd.nl arbeidsmarkt vacatures nieuws',
-  'site:nu.nl werkgelegenheid Nederland vandaag',
-  'site:nos.nl personeelstekort bedrijven',
+  // Recruitment Vakbladen (technical focus)
+  'site:werf-en.nl technical recruitment',
+  'site:recruitmentmatters.nl engineering recruitment',
+  '"intelligence group" technische arbeidsmarkt site:nl',
 
-  // Technische sector vacatures
-  'site:technischwerken.nl personeelstekort techniek',
-  'site:engineeringnet.nl technisch personeel nieuws',
-  'site:technieknederland.nl installatietechniek vacatures',
+  // Salary & Benchmark Data (technical roles)
+  'engineering salaris benchmark Nederland site:nl',
+  'technical recruitment salaris trends site:nl',
+  'automation engineer salaris 2026 site:nl',
 
-  // Nederlandse arbeidsmarkt data
-  'werkgelegenheid Nederland UWV site:nl',
-  'vacatures CBS Nederland site:nl',
-  'uitzenduren ABU Nederland site:nl',
-  'flexwerk NBBU Nederland site:nl'
+  // Oil & Gas, Energy, Manufacturing News
+  'oil gas recruitment Nederland site:nl',
+  'renewable energy recruitment Nederland site:nl',
+  'manufacturing hiring trends Nederland site:nl',
+
+  // Regional Focus (Oost-Nederland)
+  'arbeidsmarkt Gelderland techniek site:nl',
+  'personeelstekort Overijssel industrie site:nl',
+  'technical recruitment Brabant site:nl'
 ];
 
 // Search Brave for news
