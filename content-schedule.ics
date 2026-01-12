@@ -1,0 +1,99 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Recruitin//Content Intelligence Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Recruitin Content Schedule
+X-WR-TIMEZONE:Europe/Amsterdam
+
+BEGIN:VEVENT
+UID:content-creation-friday@recruitin.nl
+DTSTAMP:20260112T020000Z
+DTSTART;TZID=Europe/Amsterdam:20260117T170000
+DTEND;TZID=Europe/Amsterdam:20260117T180000
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:📰 Weekly Content Creation
+DESCRIPTION:COMPLETE WORKFLOW (60 min):\n\n17:00-17:05 News scraping\n→ cd ~/recruitin-mcp-servers\n→ node generate-news-report-now.js && node select-top-articles.js --top3\n\n17:05-17:15 Content generation\n→ Claude: "Maak weekly content"\n\n17:15-17:40 Visuals\n→ Canva infographic + blog images\n\n17:40-17:50 Review\n→ Check content + cijfers\n\n17:50-18:00 Publishing\n→ LinkedIn Wouter (post)\n→ LinkedIn Recruitin (schedule Monday)\n→ Blog (schedule Monday)\n\nFiles: COMPLETE-COMMANDS-WORKFLOWS.md
+LOCATION:~/recruitin-mcp-servers
+CATEGORIES:Content Creation
+PRIORITY:5
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:Content creation start in 10 minuten
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:metrics-monday@recruitin.nl
+DTSTAMP:20260112T020000Z
+DTSTART;TZID=Europe/Amsterdam:20260120T100000
+DTEND;TZID=Europe/Amsterdam:20260120T102000
+RRULE:FREQ=WEEKLY;BYDAY=MO
+SUMMARY:📊 Content Metrics & Insights
+DESCRIPTION:UPDATE METRICS (20 min):\n\n10:00-10:10 LinkedIn analytics\n→ Open posts (Wouter + Recruitin)\n→ View analytics\n→ Note: Impressions\, Engagement\, Comments\n\n10:10-10:15 Update Notion\n→ Content Performance Tracker\n→ Fill all metrics\n→ Tier auto-berekend\n\n10:15-10:20 Generate insights\n→ Claude: "Analyze weekly performance"\n→ Save to Notion dashboard\n\nResult: Data-driven learnings voor volgende week
+LOCATION:Notion + LinkedIn
+CATEGORIES:Analytics
+PRIORITY:4
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:Metrics update - LinkedIn stats ready (48h)
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:engagement-tuesday@recruitin.nl
+DTSTAMP:20260112T020000Z
+DTSTART;TZID=Europe/Amsterdam:20260114T100000
+DTEND;TZID=Europe/Amsterdam:20260114T101000
+RRULE:FREQ=WEEKLY;BYDAY=TU
+SUMMARY:💬 LinkedIn Engagement Check
+DESCRIPTION:QUICK ENGAGEMENT (10 min):\n\n→ Check LinkedIn notifications\n→ Respond to comments (Wouter + Recruitin)\n→ Like meaningful replies\n→ Answer questions\n\nGoal: <24h response time (algoritme boost)
+CATEGORIES:Engagement
+PRIORITY:3
+END:VEVENT
+
+BEGIN:VEVENT
+UID:engagement-wednesday@recruitin.nl
+DTSTAMP:20260112T020000Z
+DTSTART;TZID=Europe/Amsterdam:20260115T100000
+DTEND;TZID=Europe/Amsterdam:20260115T101000
+RRULE:FREQ=WEEKLY;BYDAY=WE
+SUMMARY:💬 LinkedIn Engagement Check
+DESCRIPTION:Quick check: Respond to comments\, engage with audience
+CATEGORIES:Engagement
+PRIORITY:3
+END:VEVENT
+
+BEGIN:VEVENT
+UID:engagement-thursday@recruitin.nl
+DTSTAMP:20260112T020000Z
+DTSTART;TZID=Europe/Amsterdam:20260116T100000
+DTEND;TZID=Europe/Amsterdam:20260116T101000
+RRULE:FREQ=WEEKLY;BYDAY=TH
+SUMMARY:💬 LinkedIn Engagement Check
+DESCRIPTION:Quick check: Respond to comments\, engage with audience
+CATEGORIES:Engagement
+PRIORITY:3
+END:VEVENT
+
+BEGIN:VEVENT
+UID:newsletter-monthly@recruitin.nl
+DTSTAMP:20260112T020000Z
+DTSTART;TZID=Europe/Amsterdam:20260131T170000
+DTEND;TZID=Europe/Amsterdam:20260131T172000
+RRULE:FREQ=MONTHLY;BYSETPOS=-1;BYDAY=FR
+SUMMARY:📧 Monthly Newsletter (Tech Talent Insights)
+DESCRIPTION:LINKEDIN NEWSLETTER (20 min):\n\n1. Collect Pipedrive data (placements deze maand)\n2. Beste artikel van maand (Notion)\n3. Generate newsletter (Claude)\n4. Publish LinkedIn Newsletter\n5. Promote in feed\n\nTemplate: LINKEDIN-NEWSLETTER-EENVOUDIG.md\nFormat: Terugblik + Artikel + Mijn Take
+CATEGORIES:Newsletter
+PRIORITY:5
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Newsletter tomorrow! Collect Pipedrive data today.
+END:VALARM
+END:VEVENT
+
+END:VCALENDAR
