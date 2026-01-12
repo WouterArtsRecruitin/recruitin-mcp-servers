@@ -12,10 +12,12 @@ const BRAVE_API_URL = 'https://api.search.brave.com/res/v1/web/search';
 
 // ALLEEN Nederlandse recruitment & werkgelegenheid bronnen
 const SEARCH_QUERIES = [
-  // Nederlandse RPO & Staffing
-  'RPO Nederland site:nl',
+  // Nederlandse RPO & Staffing (RPO = Recruitment Process Outsourcing)
+  '"recruitment process outsourcing" Nederland site:nl',
+  'RPO recruitment dienstverlening Nederland site:nl',
   'staffing bureau Nederland site:nl',
   'detachering payroll Nederland site:nl',
+  'managed services recruitment Nederland site:nl',
 
   // Nederlandse ATS & Recruitment Tech
   'ATS software Nederlandse markt site:nl',
