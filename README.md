@@ -1,225 +1,326 @@
-# 🚀 Recruitin MCP Servers + Content Intelligence
+# 📰 Recruitment Content Intelligence - Simpele Handleiding
 
-**43+ MCP servers + Daily News Scraping + Weekly Content Generation**
-
-🔗 **Repo**: https://github.com/WouterArtsRecruitin/recruitin-mcp-servers
+**Voor**: Wekelijkse LinkedIn + Blog content
+**Tijd**: 20 minuten per week
+**Opslag**: Top 10 artikelen in Notion (optioneel)
 
 ---
 
-## ⚡ QUICK START (2 Minuten)
+## ⚡ QUICK START (3 Stappen)
 
-### Test News Scraper Nu:
-
+### Stap 1: Run News Scraper (30 sec)
 ```bash
 cd ~/recruitin-mcp-servers
-npm install axios
 node generate-news-report-now.js
 ```
 
-**Zie je "✅ REPORT GENERATED"?** → Open rapport:
+**Je krijgt**: HTML rapport met ~160 technical recruitment nieuws artikelen
+
+---
+
+### Stap 2: Check Top 3 (30 sec)
+```bash
+node select-top-articles.js --top3
+```
+
+**Je krijgt**: Top 3 beste artikelen voor jouw content
+
+---
+
+### Stap 3: Vraag Claude Om Content (5 min)
+
+**In Claude Code chat**:
+```
+Maak weekly recruitment content op basis van top artikel
+
+Gebruik: docs/linkedin-content-authority.md (mijn schrijfstijl)
+
+Output:
+1. LinkedIn Wouter (250 chars, contrarian)
+2. LinkedIn Recruitin (350 chars, data story)
+3. Blog (1000 woorden)
+
+Met bronvermelding!
+```
+
+**Je krijgt**: 3 posts klaar om te publiceren
+
+---
+
+## 📖 GEBRUIKSHANDLEIDING
+
+### Wekelijkse Routine (Vrijdag, 20 min)
+
+**17:00 - Nieuws Verzamelen** (1 min):
+```bash
+cd ~/recruitin-mcp-servers
+node generate-news-report-now.js
+```
+
+**17:01 - Top 3 Checken** (1 min):
+```bash
+node select-top-articles.js --top3
+```
+
+Zie je beste artikel? Noteer de titel.
+
+**17:02 - Content Genereren** (5 min):
+
+In Claude Code:
+```
+Maak content op basis van: [artikel titel]
+
+LinkedIn Wouter: Contrarian take, 250 chars
+LinkedIn Recruitin: Data story, 350 chars
+Blog: 1000 woorden, praktische tips
+
+Tone: Direct, no-bullshit, data-driven
+Bronvermelding: Volledig
+```
+
+**17:07 - Review** (3 min):
+- Lees de 3 outputs
+- Check cijfers kloppen
+- Minor edits indien nodig
+
+**17:10 - Opslaan in Notion** (5 min - OPTIONEEL):
+
+**Simpel voorstel**: Alleen top 10 weekly
+```
+1. Open Notion page "Weekly News"
+2. Voeg toe:
+   - Titel artikel
+   - URL
+   - Score
+   - Gebruikt voor content? (ja/nee)
+
+Dat's het! Simpel.
+```
+
+**17:15 - Publiceren** (5 min):
+- LinkedIn Wouter: Post nu (copy-paste)
+- LinkedIn Recruitin: Schedule maandag (Buffer)
+- Blog: Upload WordPress, schedule maandag
+
+**KLAAR!** 🍺
+
+---
+
+## 💾 OPSLAG: WAT WORDT WAAR BEWAARD?
+
+### HTML Rapporten (Automatic)
+**Waar**: `~/recruitin-mcp-servers/reports/`
+**Wat**: Alle 163 artikelen per dag
+**Format**: HTML (open in browser)
+**Bewaard**: Lokaal op je Mac
+**Backup**: Naar GitHub (als je wilt)
+
+**Voordeel**: Altijd beschikbaar, geen database nodig
+**Nadeel**: Niet doorzoekbaar
+
+---
+
+### Notion (Optioneel - Jouw Voorstel)
+**Wat**: **ALLEEN top 10 artikelen** per week
+**Waarom**: Simpel, overzichtelijk, geen spam
+**Hoe**: Manual copy (5 min/week)
+
+**Simpele Notion Setup**:
+```
+Page: "Weekly Top 10 News"
+
+Format: Simple table
+
+| Week | Datum | Artikel Titel | URL | Score | Gebruikt? |
+|------|-------|---------------|-----|-------|-----------|
+| W2   | 12-01 | HR trends 2026 | [link] | 55 | ✅ |
+| W2   | 12-01 | Automation werkplaats | [link] | 30 | ❌ |
+| ... (8 more) |
+```
+
+**Tijd**: 5 minuten per week
+**Value**: Overzicht wat je gebruikt hebt, makkelijk terug te vinden
+
+---
+
+### Content Performance (Later - Als Je Wilt Meten)
+**Wat**: Gepubliceerde posts + LinkedIn stats
+**Database**: "Content Performance Tracker" (zie CONTENT-ANALYTICS-SYSTEM.md)
+**Tijd**: 15 min/week
+**Value**: Leren wat werkt → Betere content
+
+**Status**: Ontworpen, nog niet actief (wachten op feedback)
+
+---
+
+## 📋 COMMANDS (Copy-Paste Ready)
+
+### Daily/Weekly Commands
+
+**1. Scrape News** (elke vrijdag):
+```bash
+cd ~/recruitin-mcp-servers && node generate-news-report-now.js
+```
+
+**2. Top 10 Weekly**:
+```bash
+node select-top-articles.js
+```
+
+**3. Top 3 Voor Jou** (detailed):
+```bash
+node select-top-articles.js --top3
+```
+
+**4. Open HTML Rapport**:
 ```bash
 open reports/recruitment-news-*.html
 ```
 
-**Werkt?** ✅ Je bent ready! Lees verder ↓
-
----
-
-## 📖 DOCUMENTATIE (Kies wat je nodig hebt)
-
-### Voor Beginners (Start Hier)
-
-| File | Leestijd | Wat |
-|------|----------|-----|
-| **README-WOUTER.md** | 2 min | Simpele start guide (voor jou) |
-| **LEES-DIT-EERST.md** | 1 min | Welke file moet ik lezen? |
-| **QUICK-START-CONTENT-SYSTEM.md** | 5 min | Test systeem in 3 stappen |
-| **GEBRUIKSHANDLEIDING-SIMPEL.md** | 5 min | Wekelijks gebruik (vrijdag routine) |
-
-### Voor Dagelijks Gebruik
-
-| File | Gebruik |
-|------|---------|
-| **docs/RECRUITIN-COMMANDS-LIBRARY-COMPLETE.md** | 51 commands (copy-paste ready) |
-| **docs/linkedin-content-authority.md** | Wouter's tone of voice + post templates |
-| **docs/daily-news-content-system.md** | Complete systeem design |
-
-### Voor Automation Setup
-
-| File | Doel |
-|------|------|
-| **CONTENT-INTELLIGENCE-README.md** | Technical overview |
-| **.github/workflows/** | GitHub Actions (automatic running) |
-
----
-
-## 🎯 WAT KAN DIT?
-
-### 1. Daily News Scraping (Automatic)
-
-**Scrapet 25 Nederlandse recruitment bronnen**:
-- UWV (arbeidsmarkt cijfers)
-- CBS (statistieken)
-- ABU/NBBU (uitzendbranche)
-- Recruitment vakbladen
-- Technische sector nieuws
-
-**Output**: HTML dashboard (300+ artikelen/dag)
-**⚠️**: GEEN LinkedIn scraping - alleen nieuws sites
-
----
-
-### 2. Weekly Content Generation
-
-**Input**: 7 daily news reports
-**Process**: Claude AI analyseert trends
-**Output**: 3 content stukken:
-- LinkedIn post (Wouter Arts - personal)
-- LinkedIn post (Recruitin - bedrijf)
-- Blog artikel (www.recruitin.nl)
-
-**Tijd**: 15 min review + publish (was: 4 uur manual)
-
----
-
-### 3. 43+ MCP Servers
-
-**Categories**:
-- Recruitment tools (10)
-- CRM & Sales (5)
-- Communication (7)
-- Data & Storage (6)
-- AI & Generation (4)
-- Design & Viz (2)
-- Specialized agents (9+)
-
-**See**: Original README.md (scroll down) voor complete lijst
-
----
-
-## 📁 REPO STRUCTUUR
-
+**5. Generate Content** (In Claude Code):
 ```
-recruitin-mcp-servers/
-│
-├── 📰 NEWS & CONTENT
-│   ├── generate-news-report-now.js     ← RUN DIT (news scraper)
-│   ├── daily-recruitment-news-agent.js
-│   ├── reports/ (generated daily news)
-│   └── weekly-content/ (generated content)
-│
-├── 📖 DOCS (Start Hier)
-│   ├── README-WOUTER.md               ← BEGIN HIER!
-│   ├── RECRUITIN-COMMANDS-LIBRARY-COMPLETE.md  ← 51 commands
-│   ├── linkedin-content-authority.md  ← Tone of voice
-│   └── daily-news-content-system.md   ← System design
-│
-├── 🤖 MCP SERVERS (43+)
-│   ├── brave-search-mcp-server.js
-│   ├── labour-market-intelligence/
-│   ├── cv-parser/
-│   ├── email-mcp-server.js
-│   └── [40+ other servers...]
-│
-└── ⚙️ AUTOMATION
-    └── .github/workflows/ (GitHub Actions)
+Maak weekly content:
+- Basis: Top artikel
+- Tone: docs/linkedin-content-authority.md
+- Output: LinkedIn (2) + Blog (1)
+- Bronvermelding: Volledig
 ```
 
 ---
 
-## 🎯 GEBRUIK
+### Notion Commands (Optioneel)
 
-### Optie A: Simpel (Handmatig)
-
-**Elke vrijdag (20 min)**:
-1. Run news scraper: `node generate-news-report-now.js`
-2. Vraag Claude: "Maak weekly content volgens tone of voice docs"
-3. Post content (copy-paste)
-
-**Done!** Geen automation needed.
-
----
-
-### Optie B: Automated (GitHub Actions)
-
-**Setup 1x (15 min)**:
-- Add GitHub Secrets (API keys)
-- Enable workflows
-- KLAAR!
-
-**Daarna automatic**:
-- Daily 7am: News scrapes
-- Friday 17:00: Content generates
-- Jij: Review + post (15 min)
-
-**Guide**: See CONTENT-INTELLIGENCE-README.md
-
----
-
-## 🔑 TONE OF VOICE (Wouter's Style)
-
-**Van docs/linkedin-content-authority.md**:
-
-**Kenmerken**:
-- ✅ Direct ("Dit werkt niet. Hier is waarom.")
-- ✅ Eerlijk ("90% vacatureteksten zijn waardeloos")
-- ✅ Data-driven (concrete cijfers, geen vage claims)
-- ✅ Provocerend (contrarian standpunten)
-
-**Post Types**:
-1. Contrarian Take (hoogste engagement)
-2. Data Story (authority building)
-3. Behind-the-Scenes (authenticiteit)
-4. How-To (thought leadership)
-
-**Voorbeelden**: See `docs/linkedin-content-authority.md`
-
----
-
-## 💰 ROI
-
-**Content Intelligence System**:
-- Kosten: €30/maand (Brave API)
-- Bespaart: 5h/week × €50 = €1,000/maand
-- Netto: **€970/maand** = **€11,640/jaar**
-
-**Plus**: 43 MCP servers voor recruitment automation
-**Plus**: 16 Claude Code skills (if used together)
-
-**Total Potential**: €283k+/jaar
-
----
-
-## 📞 QUICK LINKS
-
-- **GitHub**: https://github.com/WouterArtsRecruitin/recruitin-mcp-servers
-- **Start Guide**: README-WOUTER.md
-- **Commands**: docs/RECRUITIN-COMMANDS-LIBRARY-COMPLETE.md (51 commands)
-- **Tone of Voice**: docs/linkedin-content-authority.md
-
----
-
-## ✅ NEXT STEPS
-
-### 1. Test News Scraper (Nu - 30 sec)
+**6. Fetch RSS Feeds** (4 bronnen → Notion):
 ```bash
-node generate-news-report-now.js
+cd notion-content-system
+python3 notion_content_manager.py --action fetch_news --max-items 5 --save
 ```
 
-### 2. Read Start Guide (5 min)
-```
-open README-WOUTER.md
-```
-
-### 3. Generate Content (In Claude Code)
-```
-Maak weekly recruitment content volgens docs/linkedin-content-authority.md
+**7. Test Notion Connection**:
+```bash
+python3 notion_content_manager.py --action test
 ```
 
 ---
 
-**Status**: Repo configured ✅
-**Ready For**: Daily news + weekly content
-**ROI**: €11,640/jaar
+## 🎯 WAT WORDT WAAR OPGESLAGEN? (Samenvatting)
 
-🚀 **GO!**
+```
+┌─────────────────────────────────────────────────────┐
+│  AUTOMATISCH (Elke Run)                             │
+├─────────────────────────────────────────────────────┤
+│  Brave Search (31 queries)                          │
+│  → 163 artikelen                                    │
+│  → Saved: HTML rapport (lokaal)                     │
+│  → Locatie: ~/recruitin-mcp-servers/reports/       │
+└─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────┐
+│  OPTIONEEL (Als je wilt)                            │
+├─────────────────────────────────────────────────────┤
+│  RSS Feeds (4 bronnen)                              │
+│  → 6 artikelen                                      │
+│  → Saved: Notion database (cloud)                   │
+│  → Needs: Database setup (10 min)                   │
+└─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────┐
+│  JOUW VOORSTEL (Simpel & Effectief)                │
+├─────────────────────────────────────────────────────┤
+│  Top 10 Weekly                                      │
+│  → Manual copy (5 min/week)                         │
+│  → Saved: Notion table (simpel)                     │
+│  → Kolommen: Titel, URL, Score, Gebruikt?          │
+└─────────────────────────────────────────────────────┘
+```
+
+**Recommendation**: Start met HTML (werkt nu), voeg Notion toe als je het nodig hebt
+
+---
+
+## 📁 BELANGRIJKSTE FILES
+
+**Voor Gebruik**:
+1. **README-WOUTER.md** - Simpele start (2 min lezen)
+2. **generate-news-report-now.js** - Run dit voor nieuws
+3. **select-top-articles.js** - Run dit voor top 10/top 3
+4. **docs/linkedin-content-authority.md** - Jouw schrijfstijl
+
+**Voor Review Morgen**:
+5. **CONTENT-REVIEW-DOCUMENT.md** - Alle gegenereerde content
+6. **RAPPORT-HTML-VOOR-FIGMA.html** - HTML voor Figma design
+
+**Voor Later**:
+7. **CONTENT-ANALYTICS-SYSTEM.md** - Feedback loop (meten & optimaliseren)
+8. **LINKEDIN-NEWSLETTER-EENVOUDIG.md** - Maandelijkse newsletter
+
+---
+
+## 🎯 SIMPELE NOTION SETUP (Jouw Voorstel)
+
+### Optie: Weekly Top 10 Table
+
+**In Notion** (5 min setup):
+
+**Stap 1**: Create page "Weekly Top 10 News"
+
+**Stap 2**: Add simple table:
+```
+Week | Datum | Titel | URL | Score | Gebruikt
+W2   | 12-01 | HR trends 2026 | [link] | 55 | ✅
+W2   | 12-01 | Automation werkplaats | [link] | 30 | ❌
+W2   | 12-01 | [8 more...] | ... | ... | ...
+```
+
+**Stap 3**: Elke vrijdag (5 min):
+```bash
+# Run top 10 selector
+node select-top-articles.js
+
+# Copy top 10 naar Notion table (manual)
+# Just: Titel, URL, Score
+```
+
+**KLAAR!** Simpel archief zonder database complexity.
+
+---
+
+## ✅ STATUS CHECK
+
+**Wat werkt NU**:
+- ✅ News scraper (163 artikelen/dag)
+- ✅ Top 10 selector (automatic scoring)
+- ✅ Top 3 voor jou (best articles)
+- ✅ HTML rapporten (saved lokaal)
+- ✅ Content generation (via Claude)
+
+**Wat NIET automatisch is**:
+- ❌ Artikelen → Notion (manual setup needed)
+- ❌ Content → Notion (kan je doen, niet automatic)
+
+**Jouw voorstel**:
+- ✅ Top 10 weekly → Notion table (5 min manual/week)
+- ✅ Simpel, geen database gedoe
+- ✅ Genoeg voor overzicht
+
+**Mijn advies**: Doe jouw voorstel! Simpel = beter.
+
+---
+
+## 📞 MORGEN
+
+**Open**:
+1. `CONTENT-REVIEW-DOCUMENT.md` (alle content outputs)
+2. Review content
+3. Geef feedback
+4. Publish!
+
+**Optioneel**:
+- Create simpele Notion table voor top 10 weekly
+
+---
+
+**Tot morgen!** 🚀
+
+*Alles staat klaar in: ~/recruitin-mcp-servers/*
+*GitHub: https://github.com/WouterArtsRecruitin/recruitin-mcp-servers*
