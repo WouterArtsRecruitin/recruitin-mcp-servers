@@ -40,10 +40,14 @@ const SEARCH_QUERIES = [
   'site:cbs.nl vacatures werkloosheid cijfers',
   'site:cbs.nl spanning arbeidsmarkt',
 
-  // Recruitment vakbladen
+  // Recruitment vakbladen & platforms
   'site:recruitmentmatters.nl laatste nieuws',
   'site:werf-en.nl recruitment trends',
+  'site:recruitmenttech.nl recruitment technologie',
+  'site:recruitmenttech.nl AI recruitment',
   'site:intermediair.nl uitzendbranche nieuws',
+  '"intelligence group" arbeidsmarkt nederland site:nl',
+  'site:intelligencegroup.nl arbeidsmarkt rapport',
 
   // Arbeidsmarkt nieuws
   'site:fd.nl arbeidsmarkt vacatures nieuws',
