@@ -1,0 +1,56 @@
+═══════════════════════════════════════════════════════════════════
+Week 2 - 12 januari 2026 - Technical Recruitment News
+═══════════════════════════════════════════════════════════════════
+
+📊 TOP 10 ARTIKELEN (Automatic Selected)
+
+1. ⭐ HR-trends 2026: vier belangrijke rollen voor HR-managers (55/100)
+   Bron: Salaris Vanmorgen, 2 januari 2026
+   URL: https://www.salarisvanmorgen.nl/2026/01/02/partner-sd-worx-hr-trends-2026-vier-belangrijke-rollen-voor-hr-managers/
+   
+   ✅ GEBRUIKT VOOR CONTENT:
+   - LinkedIn Wouter (contrarian take)
+   - LinkedIn Recruitin (data story)
+   - Blog artikel (complete analyse)
+
+2. Onderhoud en automatisering industriële werkplaatsen (30/100)
+   Bron: Metaal Magazine
+   URL: https://www.metaalmagazine.nl/partners/onderhoud-en-automatisering-in-industriele-werkplaatsen-hoe-slimme-keuzes-productiviteit-verhogen/107731/
+   ❌ Niet gebruikt
+
+3. Technische Geneeskunde opleiding (30/100)
+   Bron: Universiteit Twente
+   ❌ Niet gebruikt (opleiding, geen nieuws)
+
+4. Strevon technische bedrijven (30/100)
+   Bron: Strevon.nl
+   ❌ Niet gebruikt (bedrijfspagina)
+
+5. Werktuigbouwkunde Bachelor (30/100)
+   Bron: Universiteit Twente
+   ❌ Niet gebruikt
+
+6. Mechanical Engineering Master (30/100)
+   Bron: Universiteit Twente
+   ❌ Niet gebruikt
+
+7. Industrieel Ontwerpen (30/100)
+   Bron: Universiteit Twente
+   ❌ Niet gebruikt
+
+8-10. Overige technical keywords (30/100)
+   (Geen actual recruitment nieuws)
+
+═══════════════════════════════════════════════════════════════════
+
+📝 CONTENT STATUS:
+
+Generated content van artikel #1:
+→ LinkedIn Wouter: 298 chars (contrarian - culture fit kritiek)
+→ LinkedIn Recruitin: 349 chars (data story - recruitin cijfers)
+→ Blog: 1,047 woorden (HR trends vs technical recruitment)
+
+Review: CONTENT-REVIEW-DOCUMENT.md
+Publish: Gepland vrijdag/maandag
+
+═══════════════════════════════════════════════════════════════════
