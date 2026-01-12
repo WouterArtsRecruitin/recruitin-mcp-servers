@@ -14,10 +14,9 @@ const BRAVE_API_URL = 'https://api.search.brave.com/res/v1/web/search';
 const SEARCH_QUERIES = [
   // Nederlandse RPO & Staffing (RPO = Recruitment Process Outsourcing)
   '"recruitment process outsourcing" Nederland site:nl',
-  'RPO recruitment dienstverlening Nederland site:nl',
+  'RPO recruitment dienstverlening Nederland -omroep site:nl',
   'staffing bureau Nederland site:nl',
   'detachering payroll Nederland site:nl',
-  'managed services recruitment Nederland site:nl',
 
   // Nederlandse ATS & Recruitment Tech
   'ATS software Nederlandse markt site:nl',
@@ -115,11 +114,59 @@ async function generateReport() {
     await new Promise(resolve => setTimeout(resolve, 1000)); // Rate limiting
   }
 
-  // Count articles per source (excluding stichtingrpo.nl)
+  // Irrelevant sources filter (KWALITEIT > KWANTITEIT)
+  const irrelevantSources = [
+    // Regionale omroepen (geen recruitment nieuws)
+    'stichtingrpo.nl', 'hartvannederland.nl', 'rtvnoord.nl',
+    'omroepbrabant.nl', 'omroepgelderland.nl', 'rtvutrecht.nl',
+    'omroepwest.nl', 'rtvdrenthe.nl', 'l1.nl',
+
+    // Job boards (vacatures, geen nieuws)
+    'indeed.nl', 'monsterboard.nl', 'nationale-vacaturebank.nl',
+    'jobbird.nl', 'intermediair.nl/vacatures', 'werkenbij.nl',
+    'vacatures.nl', 'jobdigger.nl', 'technischwerken.nl/vacatures',
+
+    // Recruitment bureaus (vacature listings)
+    'extra-talent.nl', 'brunel.nl', 'yacht.nl', 'randstad.nl',
+    'unique.nl', 'olympia.nl', 'tempo-team.nl',
+
+    // Social media & algemene lijsten
+    'sortlist.nl', 'linkedin.com', 'facebook.com', 'twitter.com',
+
+    // Niet-relevante algemene sites
+    'marktplaats.nl', 'funda.nl', 'wikipedia.org'
+  ];
+
+  // Additional keyword filters (filter titles)
+  const excludeTitleKeywords = [
+    'vacature', 'vacancy', 'solliciteer', 'werken bij', 'werkenbij',
+    'gezocht:', 'hiring', 'we zoeken', 'ben jij', 'word jij'
+  ];
+
+  function isRelevantArticle(article) {
+    // Filter op URL
+    if (irrelevantSources.some(source => article.url.includes(source))) {
+      return false;
+    }
+
+    // Filter op titel (geen vacature postings)
+    const titleLower = article.title.toLowerCase();
+    if (excludeTitleKeywords.some(kw => titleLower.includes(kw))) {
+      return false;
+    }
+
+    return true;
+  }
+
+  // Count articles per source (excluding irrelevant sources)
   const sourceCounts = {};
   allResults.forEach(result => {
-    const filteredResults = result.results.filter(article => !article.url.includes('stichtingrpo.nl'));
-    const filteredNews = result.news.filter(article => !article.url.includes('stichtingrpo.nl'));
+    const filteredResults = result.results.filter(article =>
+      !irrelevantSources.some(source => article.url.includes(source))
+    );
+    const filteredNews = result.news.filter(article =>
+      !irrelevantSources.some(source => article.url.includes(source))
+    );
     const sourceCount = filteredResults.length + filteredNews.length;
     if (sourceCount > 0) {
       sourceCounts[result.query] = sourceCount;
@@ -215,9 +262,9 @@ ${sortedSources.map(([source, count]) => `        <tr>
     <h2>${searchResult.query}</h2>
 `;
 
-    // Add web results (filter out stichtingrpo.nl)
+    // Add web results (filter for quality - using shared function)
     searchResult.results
-      .filter(article => !article.url.includes('stichtingrpo.nl'))
+      .filter(article => isRelevantArticle(article))
       .slice(0, 10).forEach(article => {
       html += `
     <div class="article">
@@ -228,9 +275,9 @@ ${sortedSources.map(([source, count]) => `        <tr>
 `;
     });
 
-    // Add news results (filter out stichtingrpo.nl)
+    // Add news results (filter for quality)
     searchResult.news
-      .filter(article => !article.url.includes('stichtingrpo.nl'))
+      .filter(article => isRelevantArticle(article))
       .slice(0, 5).forEach(article => {
       html += `
     <div class="article">
