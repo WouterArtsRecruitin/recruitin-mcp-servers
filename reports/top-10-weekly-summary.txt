@@ -1,0 +1,109 @@
+
+📰 RECRUITIN TOP ARTICLES SELECTOR
+
+📄 Parsing report: /Users/wouterarts/recruitin-mcp-servers/reports/recruitment-news-2026-01-12.html
+
+✅ Found 163 articles
+
+🎯 Scoring articles for thought leadership potential...
+
+════════════════════════════════════════════════════════════════════════════════
+📊 TOP 10 ARTIKELEN - WEEKLY SELECTION
+════════════════════════════════════════════════════════════════════════════════
+
+1. HR-trends 2026: vier belangrijke rollen voor HR-managers · Salaris Vanmorgen
+   Score: 55/100
+   URL: https://www.salarisvanmorgen.nl/2026/01/02/partner-sd-worx-hr-trends-2026-vier-belangrijke-rollen-voor-hr-managers/
+   Breakdown:
+     • Thought Leadership: 100/100
+     • Technical Relevance: 0/100
+     • Recruitin Fit: 100/100
+     • Content Opportunity: 0/100
+
+2. Technische Geneeskunde / Klinische Technologie | Medische wo opleiding - Bachelor
+   Score: 30/100
+   URL: https://www.utwente.nl/onderwijs/bachelor/opleidingen/technische-geneeskunde/
+   Breakdown:
+     • Thought Leadership: 0/100
+     • Technical Relevance: 100/100
+     • Recruitin Fit: 0/100
+     • Content Opportunity: 0/100
+
+3. Hoe ervaren andere technische bedrijven de samenwerking met Strevon? - Strevon
+   Score: 30/100
+   URL: https://strevon.nl/kennisbank/voor-werkgevers/meestgesteldevragen/hoe-ervaren-andere-technische-bedrijven-de-samenwerking-met-strevon/
+   Breakdown:
+     • Thought Leadership: 0/100
+     • Technical Relevance: 100/100
+     • Recruitin Fit: 0/100
+     • Content Opportunity: 0/100
+
+4. Onderhoud en automatisering in industriële werkplaatsen: hoe slimme keuzes productiviteit verhogen • Metaal Magazine
+   Score: 30/100
+   URL: https://www.metaalmagazine.nl/partners/onderhoud-en-automatisering-in-industriele-werkplaatsen-hoe-slimme-keuzes-productiviteit-verhogen/107731/
+   Breakdown:
+     • Thought Leadership: 100/100
+     • Technical Relevance: 0/100
+     • Recruitin Fit: 0/100
+     • Content Opportunity: 0/100
+
+5. Werktuigbouwkunde | Bachelor - wo opleiding
+   Score: 30/100
+   URL: https://www.utwente.nl/onderwijs/bachelor/opleidingen/mechanical-engineering/
+   Breakdown:
+     • Thought Leadership: 0/100
+     • Technical Relevance: 100/100
+     • Recruitin Fit: 0/100
+     • Content Opportunity: 0/100
+
+6. Mechanical Engineering / Werktuigbouwkunde | Master - wo opleiding
+   Score: 30/100
+   URL: https://www.utwente.nl/onderwijs/master/opleidingen/mechanical-engineering/
+   Breakdown:
+     • Thought Leadership: 0/100
+     • Technical Relevance: 100/100
+     • Recruitin Fit: 0/100
+     • Content Opportunity: 0/100
+
+7. Industrieel Ontwerpen | Bachelor - wo opleiding
+   Score: 30/100
+   URL: https://www.utwente.nl/onderwijs/bachelor/opleidingen/industrial-design-engineering/
+   Breakdown:
+     • Thought Leadership: 0/100
+     • Technical Relevance: 100/100
+     • Recruitin Fit: 0/100
+     • Content Opportunity: 0/100
+
+8. Hoe ervaren andere technische bedrijven de samenwerking met Strevon? - Strevon
+   Score: 30/100
+   URL: https://strevon.nl/kennisbank/voor-werkgevers/meestgesteldevragen/hoe-ervaren-andere-technische-bedrijven-de-samenwerking-met-strevon/
+   Breakdown:
+     • Thought Leadership: 0/100
+     • Technical Relevance: 100/100
+     • Recruitin Fit: 0/100
+     • Content Opportunity: 0/100
+
+9. De bouwsteen van moderne technologie - Elektrotechniek - DIA Groep
+   Score: 30/100
+   URL: https://www.diagroep.nl/kennisbank/de-bouwsteen-van-moderne-technologie-elektrotechniek
+   Breakdown:
+     • Thought Leadership: 0/100
+     • Technical Relevance: 100/100
+     • Recruitin Fit: 0/100
+     • Content Opportunity: 0/100
+
+10. Specialist elektrotechniek | Gilde Opleidingen
+   Score: 30/100
+   URL: https://www.gildeopleidingen.nl/opleidingen/specialist-elektrotechniek
+   Breakdown:
+     • Thought Leadership: 0/100
+     • Technical Relevance: 100/100
+     • Recruitin Fit: 0/100
+     • Content Opportunity: 0/100
+
+
+💡 TIP: Run with --top3 flag voor detailed top 3 analysis
+   node select-top-articles.js --top3
+
+💾 Full analysis saved to: /Users/wouterarts/recruitin-mcp-servers/reports/top-articles-2026-01-12.json
+
