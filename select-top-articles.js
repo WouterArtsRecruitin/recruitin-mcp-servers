@@ -246,8 +246,18 @@ function selectTopArticles(articles, count = 10) {
   // Sort by total score
   scored.sort((a, b) => b.scoring.total_score - a.scoring.total_score);
 
-  // Return top N
-  return scored.slice(0, count);
+  // Deduplicate by URL (keep highest scored instance)
+  const seen = new Set();
+  const deduplicated = scored.filter(article => {
+    if (seen.has(article.url)) {
+      return false;
+    }
+    seen.add(article.url);
+    return true;
+  });
+
+  // Return top N unique articles
+  return deduplicated.slice(0, count);
 }
 
 // ============================================================================

@@ -3,7 +3,7 @@
 
 const { Client } = require('@notionhq/client');
 
-const NOTION_API_KEY = 'ntn_N921362306116pa5KHYRvt3AScWH3y2K87Hf4bMwi2x5R3';
+const NOTION_API_KEY = 'ntn_n921362306174F3yoW5yeNwFGnruLy9JiB0YV2GANOAe3c';
 const notion = new Client({ auth: NOTION_API_KEY });
 
 async function findDatabases() {
