@@ -35,6 +35,8 @@ uploads/
 downloads/
 reports/*.csv
 reports/*.xlsx
+reports/*.html
+reports/*.json
 
 # Secrets
 *credentials*
