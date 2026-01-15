@@ -1,0 +1,64 @@
+name: Daily News Scraper
+
+# Schedule: Every day at 7:00 AM (Amsterdam time)
+on:
+  schedule:
+    - cron: '0 6 * * *'  # 6:00 UTC = 7:00 Amsterdam (winter) / 8:00 (summer)
+  workflow_dispatch:  # Manual trigger via GitHub UI
+
+jobs:
+  scrape-news:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install axios
+
+      - name: Run news scraper
+        env:
+          BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
+        run: |
+          echo "🔍 Starting daily news scraping..."
+          node generate-news-report-now.js
+
+          # Check if report was generated
+          if [ -f reports/recruitment-news-$(date +%Y-%m-%d).html ]; then
+            echo "✅ Report generated successfully"
+          else
+            echo "❌ Report generation failed"
+            exit 1
+          fi
+
+      - name: Commit and push report
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "GitHub Actions Bot"
+
+          git add reports/
+
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No new articles found today"
+          else
+            git commit -m "📰 Daily news scraping - $(date +%Y-%m-%d)"
+            git push
+            echo "✅ Report committed and pushed"
+          fi
+
+      - name: Upload report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-news-report-${{ github.run_number }}
+          path: reports/recruitment-news-*.html
+          retention-days: 7

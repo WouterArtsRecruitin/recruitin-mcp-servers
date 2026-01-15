@@ -124,7 +124,7 @@ node generate-news-report-now.js
 - Vrijdag 17:00: Content generates
 - Jij: Review + post (15 min)
 
-**Setup Guide**: Zie `docs/AUTOMATION-SETUP.md` (komt zo)
+**Setup Guide**: Zie [`GITHUB-ACTIONS-SETUP.md`](GITHUB-ACTIONS-SETUP.md)
 
 ---
 
@@ -146,11 +146,14 @@ node generate-news-report-now.js
 
 **File**: `.github/workflows/weekly-content-gen.yml`
 **Schedule**: Every Friday 17:00
-**Does**: Analyzes news → Generates content via Claude API
-**Output**: Saves to `weekly-content/`
+**Does**: Selects top 10 → Uploads to Notion → Generates content via Claude API
+**Output**:
+- `weekly-content/content-YYYY-MM-DD.json`
+- `reports/top-articles-YYYY-MM-DD.json`
+- GitHub Issue with content preview
 
 **Setup**:
-- Add secrets: `BRAVE_API_KEY`, `ANTHROPIC_API_KEY`
+- Add secrets: `BRAVE_API_KEY`, `ANTHROPIC_API_KEY`, `NOTION_API_KEY`
 - Enable workflow
 - Done!
 

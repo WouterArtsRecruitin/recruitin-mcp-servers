@@ -1,0 +1,163 @@
+name: Weekly Content Generator
+
+# Schedule: Every Friday at 17:00 (Amsterdam time)
+on:
+  schedule:
+    - cron: '0 16 * * 5'  # 16:00 UTC = 17:00 Amsterdam (winter) on Fridays
+  workflow_dispatch:  # Manual trigger via GitHub UI
+
+jobs:
+  generate-content:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm install axios
+          npm install @notionhq/client
+
+      - name: Select top 10 articles
+        env:
+          BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
+        run: |
+          echo "📊 Selecting top 10 articles..."
+          node select-top-articles.js
+
+          if [ -f reports/top-articles-$(date +%Y-%m-%d).json ]; then
+            echo "✅ Top 10 articles selected"
+            cat reports/top-articles-$(date +%Y-%m-%d).json | jq '.top_10[0:3]'
+          else
+            echo "❌ Article selection failed"
+            exit 1
+          fi
+
+      - name: Upload to Notion
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+        run: |
+          echo "📤 Uploading to Notion database..."
+          node upload-to-correct-notion.js
+
+          if [ $? -eq 0 ]; then
+            echo "✅ Articles uploaded to Notion"
+          else
+            echo "❌ Notion upload failed"
+            exit 1
+          fi
+
+      - name: Generate content via Claude
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          echo "🤖 Generating weekly content..."
+
+          # Create weekly-content directory if not exists
+          mkdir -p weekly-content
+
+          # Get top article details
+          TOP_ARTICLE=$(cat reports/top-articles-$(date +%Y-%m-%d).json | jq -r '.top_10[0]')
+          TITLE=$(echo "$TOP_ARTICLE" | jq -r '.title')
+          URL=$(echo "$TOP_ARTICLE" | jq -r '.url')
+          ANGLE=$(echo "$TOP_ARTICLE" | jq -r '.best_angle')
+
+          # Generate content using Claude API
+          curl https://api.anthropic.com/v1/messages \
+            --header "x-api-key: $ANTHROPIC_API_KEY" \
+            --header "anthropic-version: 2023-06-01" \
+            --header "content-type: application/json" \
+            --data @- <<EOF > weekly-content/content-$(date +%Y-%m-%d).json
+          {
+            "model": "claude-sonnet-4-5-20250929",
+            "max_tokens": 4096,
+            "messages": [
+              {
+                "role": "user",
+                "content": "Maak weekly recruitment content op basis van dit artikel:\n\nArtikel: $TITLE\nURL: $URL\nContent Angle: $ANGLE\n\nTone: Direct, eerlijk, data-driven (Wouter's no-bullshit style)\n\nGenereer 3 outputs:\n\n1. LINKEDIN WOUTER (250-300 chars)\n- Persoonlijke take\n- Contrarian perspectief\n- Geen bullshit\n- Bronvermelding in comment\n\n2. LINKEDIN RECRUITIN (350-400 chars)\n- Data story met Recruitin cijfers\n- Zakelijk maar toegankelijk\n- Met infographic specs\n- Bronvermelding in post\n\n3. BLOG ARTIKEL (1000-1200 woorden)\nStructuur:\n- TL;DR (50 woorden)\n- Het nieuws (200 woorden)\n- Analyse (300 woorden)\n- Recruitin ervaring (200 woorden)\n- 5 Praktische tips (300 woorden)\n- Conclusie (100 woorden)\n\nFormat: JSON met keys: linkedin_wouter, linkedin_recruitin, blog_article"
+              }
+            ]
+          }
+          EOF
+
+          if [ $? -eq 0 ]; then
+            echo "✅ Content generated via Claude"
+          else
+            echo "❌ Content generation failed"
+            exit 1
+          fi
+
+      - name: Commit and push content
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "GitHub Actions Bot"
+
+          git add weekly-content/
+          git add reports/top-articles-*.json
+
+          if git diff --staged --quiet; then
+            echo "No new content generated"
+          else
+            git commit -m "📝 Weekly content - Week $(date +%V) - $(date +%Y-%m-%d)"
+            git push
+            echo "✅ Content committed and pushed"
+          fi
+
+      - name: Create GitHub Issue with content
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Extract content from Claude response
+          CONTENT_FILE="weekly-content/content-$(date +%Y-%m-%d).json"
+
+          if [ -f "$CONTENT_FILE" ]; then
+            LINKEDIN_WOUTER=$(cat "$CONTENT_FILE" | jq -r '.content[0].text' | jq -r '.linkedin_wouter')
+            LINKEDIN_RECRUITIN=$(cat "$CONTENT_FILE" | jq -r '.content[0].text' | jq -r '.linkedin_recruitin')
+
+            # Create issue for review
+            gh issue create \
+              --title "📝 Weekly Content - Week $(date +%V) - $(date +%Y-%m-%d)" \
+              --body "## 📊 Weekly Content Ready for Review
+
+          ### LinkedIn Wouter (Personal)
+          \`\`\`
+          $LINKEDIN_WOUTER
+          \`\`\`
+
+          ### LinkedIn Recruitin (Company)
+          \`\`\`
+          $LINKEDIN_RECRUITIN
+          \`\`\`
+
+          ### 📎 Files
+          - Full content: \`weekly-content/content-$(date +%Y-%m-%d).json\`
+          - Top articles: \`reports/top-articles-$(date +%Y-%m-%d).json\`
+          - Notion: https://www.notion.so/Weekly-Top-10-News-2e62252cbb15812697a9eb7166e6b3b8
+
+          ### ✅ Next Steps
+          1. Review content above
+          2. Create visuals (Canva)
+          3. Schedule posts:
+             - Wouter: Post today 18:00
+             - Recruitin: Schedule Monday 9:00
+             - Blog: Schedule Monday 9:00" \
+              --label "content,weekly"
+
+            echo "✅ GitHub issue created with content preview"
+          fi
+
+      - name: Upload content as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-content-${{ github.run_number }}
+          path: weekly-content/
+          retention-days: 30
