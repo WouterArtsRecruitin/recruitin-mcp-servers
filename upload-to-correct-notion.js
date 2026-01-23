@@ -2,7 +2,7 @@
 import { Client } from '@notionhq/client';
 import fs from 'fs';
 
-const notion = new Client({ auth: 'ntn_n921362306174F3yoW5yeNwFGnruLy9JiB0YV2GANOAe3c' });
+const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const DATABASE_ID = '949d73d7816f4b35b2c806654ad0a3c4'; // Articles Database (created 2026-01-15)
 
 async function upload() {
