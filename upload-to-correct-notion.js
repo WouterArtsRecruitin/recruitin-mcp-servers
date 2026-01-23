@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const { Client } = require('@notionhq/client');
-const fs = require('fs');
+import { Client } from '@notionhq/client';
+import fs from 'fs';
 
 const notion = new Client({ auth: 'ntn_n921362306174F3yoW5yeNwFGnruLy9JiB0YV2GANOAe3c' });
 const DATABASE_ID = '949d73d7816f4b35b2c806654ad0a3c4'; // Articles Database (created 2026-01-15)
