@@ -152,8 +152,7 @@ jobs:
           3. Schedule posts:
              - Wouter: Post today 18:00
              - Recruitin: Schedule Monday 9:00
-             - Blog: Schedule Monday 9:00" \
-              --label "content,weekly"
+             - Blog: Schedule Monday 9:00"
 
             echo "✅ GitHub issue created with content preview"
           fi
