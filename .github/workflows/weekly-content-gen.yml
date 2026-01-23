@@ -9,6 +9,9 @@ on:
 jobs:
   generate-content:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
 
     steps:
       - name: Checkout repository
