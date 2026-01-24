@@ -1,0 +1,49 @@
+name: Publish Wouter Skills Bundle MCP
+
+on:
+  release:
+    types: [published]
+  push:
+    branches: [main]
+    paths:
+      - 'wouter-skills-bundle/**'
+      - '.github/workflows/publish-wouter-mcp.yml'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: |
+          cd wouter-skills-bundle
+          npm ci
+      
+      - name: Build
+        run: |
+          cd wouter-skills-bundle
+          npm run build
+      
+      - name: Verify build
+        run: |
+          cd wouter-skills-bundle
+          test -f dist/server.js && echo "✅ Build successful"
+      
+      - name: Create release archive
+        if: github.event_name == 'release'
+        run: |
+          cd wouter-skills-bundle
+          tar -czf ../wouter-skills-bundle-${{ github.ref_name }}.tar.gz dist/ README.md package.json
+      
+      - name: Upload release artifact
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: wouter-skills-bundle-${{ github.ref_name }}.tar.gz
