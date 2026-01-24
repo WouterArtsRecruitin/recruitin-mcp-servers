@@ -6,6 +6,11 @@ import axios from 'axios';
 import { promises as fs } from 'fs';
 import path from 'path';
 
+// Define __dirname and __filename for ES modules
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // Configuration
 const BRAVE_API_KEY = process.env.BRAVE_API_KEY || 'BSARdxCQWTc2qwf41D9nweSyzfBzf6B';
 const BRAVE_API_URL = 'https://api.search.brave.com/res/v1/web/search';
