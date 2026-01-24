@@ -2,9 +2,9 @@
 // Manual trigger for Daily Recruitment News collection
 // This script directly calls the collection function to generate a report NOW
 
-const axios = require('axios');
-const fs = require('fs').promises;
-const path = require('path');
+import axios from 'axios';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 // Configuration
 const BRAVE_API_KEY = process.env.BRAVE_API_KEY || 'BSARdxCQWTc2qwf41D9nweSyzfBzf6B';
