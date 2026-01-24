@@ -6,8 +6,8 @@ on:
   push:
     branches: [main]
     paths:
-      - 'wouter-skills-bundle/**'
-      - '.github/workflows/publish-wouter-mcp.yml'
+      - "wouter-skills-bundle/**"
+      - ".github/workflows/publish-wouter-mcp.yml"
 
 jobs:
   publish:
@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
       
       - name: Install dependencies
         run: |
@@ -37,13 +37,13 @@ jobs:
           test -f dist/server.js && echo "✅ Build successful"
       
       - name: Create release archive
-        if: github.event_name == 'release'
+        if: github.event_name == "release"
         run: |
           cd wouter-skills-bundle
           tar -czf ../wouter-skills-bundle-${{ github.ref_name }}.tar.gz dist/ README.md package.json
       
       - name: Upload release artifact
-        if: github.event_name == 'release'
+        if: github.event_name == "release"
         uses: softprops/action-gh-release@v1
         with:
           files: wouter-skills-bundle-${{ github.ref_name }}.tar.gz
