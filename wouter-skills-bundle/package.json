@@ -1,0 +1,52 @@
+{
+  "name": "wouter-skills-bundle-mcp",
+  "version": "4.0.0",
+  "description": "Complete recruitment automation skills bundle for Claude - 9 guides, 20 agent patterns, 5 MCP servers, 5 workflows",
+  "main": "dist/server.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node src/server.ts",
+    "test": "node dist/server.js &",
+    "stop": "pkill -f 'node dist/server.js'",
+    "lint": "eslint src/**/*.ts",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "recruitment",
+    "automation",
+    "agents",
+    "claude",
+    "skills",
+    "workflows"
+  ],
+  "author": "Wouter Arts <wouter@recruitin.nl>",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-sdk/sdk": "^0.24.3",
+    "@modelcontextprotocol/sdk": "^1.2.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2",
+    "eslint": "^8.56.0",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WouterArtsRecruitin/recruitin-mcp-servers.git",
+    "directory": "wouter-skills-bundle"
+  },
+  "bugs": {
+    "url": "https://github.com/WouterArtsRecruitin/recruitin-mcp-servers/issues"
+  },
+  "homepage": "https://github.com/WouterArtsRecruitin/recruitin-mcp-servers/tree/main/wouter-skills-bundle"
+}
