@@ -15,15 +15,14 @@
  * Status: Production Ready
  */
 
-import Anthropic from "@anthropic-sdk/sdk";
-import {
-  Server,
-  Tool,
-  TextContent,
-  ToolUseBlock,
-  MessageParam,
-} from "@modelcontextprotocol/sdk/server/index.js";
+import Anthropic from "@anthropic-ai/sdk";
+import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import {
+  ListToolsRequestSchema,
+  CallToolRequestSchema,
+  type TextContent,
+} from "@modelcontextprotocol/sdk/types.js";
 import { z } from "zod";
 import * as fs from "fs";
 import * as path from "path";
@@ -691,7 +690,7 @@ const MCP_SERVERS: Record<MCPServerType, MCPServer> = {
 
   "recruitin-intelligence": {
     name: "Recruitin Intelligence MCP",
-    type: "recruitment-intelligence",
+    type: "recruitin-intelligence",
     description:
       "Company intelligence, market analysis, competitor tracking, labour market insights",
     tools: [
@@ -1577,7 +1576,7 @@ const WORKFLOWS: Record<string, Workflow> = {
     → Log in Google Sheets
     → Schedule follow-ups
     `,
-    mcp_servers_used: ["elite-email", "recruitment-intelligence"],
+    mcp_servers_used: ["elite-email", "recruitin-intelligence"],
     roi_estimate: "€50k/month (if 5% response → 10-15 new deals)",
     implementation_hours: 12,
     status: "ready",
@@ -1613,7 +1612,7 @@ const WORKFLOWS: Record<string, Workflow> = {
     → Track conversions to Pipedrive
     → Daily performance report
     `,
-    mcp_servers_used: ["meta-ads", "recruitment-intelligence"],
+    mcp_servers_used: ["meta-ads", "recruitin-intelligence"],
     roi_estimate:
       "€200k/month revenue if 100 leads × €2k deal value × 5% conversion",
     implementation_hours: 20,
@@ -1647,7 +1646,7 @@ const WORKFLOWS: Record<string, Workflow> = {
     → Create Google Doc report
     → Share with team via Slack
     `,
-    mcp_servers_used: ["labour-market", "recruitment-intelligence"],
+    mcp_servers_used: ["labour-market", "recruitin-intelligence"],
     roi_estimate: "€10k/month (better pricing + positioning)",
     implementation_hours: 4,
     status: "ready",
@@ -1676,7 +1675,7 @@ const WORKFLOWS: Record<string, Workflow> = {
     → Score candidate
     → Update Pipedrive custom fields
     `,
-    mcp_servers_used: ["recruitment-intelligence", "jobdigger-analyzer"],
+    mcp_servers_used: ["recruitin-intelligence", "jobdigger-analyzer"],
     roi_estimate: "€5k/month (faster candidate eval)",
     implementation_hours: 6,
     status: "ready",
@@ -1703,7 +1702,7 @@ class WouterSkillsBundleServer {
   }
 
   private setupHandlers() {
-    this.server.setRequestHandler(Tool.list_schema, async () => {
+    this.server.setRequestHandler(ListToolsRequestSchema, async () => {
       return {
         tools: [
           {
@@ -1789,18 +1788,20 @@ class WouterSkillsBundleServer {
       };
     });
 
-    this.server.setRequestHandler(Tool.request_schema, async (request) => {
-      const { name, arguments: args } = request.params;
+    this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
+      const { name, arguments: args = {} } = request.params;
+      const getArg = (key: string): string => String(args[key] ?? "");
 
       try {
         switch (name) {
           case "get_skill_guide": {
+            const category = getArg("category");
             const guide =
-              this.skills[args.category as keyof typeof REFERENCE_GUIDES];
+              this.skills[category as keyof typeof REFERENCE_GUIDES];
             if (!guide) {
               return {
                 type: "text",
-                text: `Skill guide not found: ${args.category}`,
+                text: `Skill guide not found: ${category}`,
               } as TextContent;
             }
             return {
@@ -1810,11 +1811,12 @@ class WouterSkillsBundleServer {
           }
 
           case "get_agent_skill": {
-            const skill = this.agents[args.skill_name];
+            const skillName = getArg("skill_name");
+            const skill = this.agents[skillName];
             if (!skill) {
               return {
                 type: "text",
-                text: `Agent skill not found: ${args.skill_name}`,
+                text: `Agent skill not found: ${skillName}`,
               } as TextContent;
             }
             return {
@@ -1824,11 +1826,12 @@ class WouterSkillsBundleServer {
           }
 
           case "get_mcp_server_spec": {
-            const mcp = this.mcps[args.server_type];
+            const serverType = getArg("server_type");
+            const mcp = this.mcps[serverType as MCPServerType];
             if (!mcp) {
               return {
                 type: "text",
-                text: `MCP server not found: ${args.server_type}`,
+                text: `MCP server not found: ${serverType}`,
               } as TextContent;
             }
             return {
@@ -1838,11 +1841,12 @@ class WouterSkillsBundleServer {
           }
 
           case "get_workflow": {
-            const workflow = this.workflows[args.workflow_id];
+            const workflowId = getArg("workflow_id");
+            const workflow = this.workflows[workflowId];
             if (!workflow) {
               return {
                 type: "text",
-                text: `Workflow not found: ${args.workflow_id}`,
+                text: `Workflow not found: ${workflowId}`,
               } as TextContent;
             }
             return {
@@ -1872,7 +1876,7 @@ class WouterSkillsBundleServer {
           }
 
           case "search_skills": {
-            const query = args.query.toLowerCase();
+            const query = getArg("query").toLowerCase();
             const results: string[] = [];
             Object.entries(this.skills).forEach(([key, skill]) => {
               if (
@@ -1897,11 +1901,12 @@ class WouterSkillsBundleServer {
           }
 
           case "get_implementation_roadmap": {
-            const workflow = this.workflows[args.workflow_id];
+            const roadmapWorkflowId = getArg("workflow_id");
+            const workflow = this.workflows[roadmapWorkflowId];
             if (!workflow) {
               return {
                 type: "text",
-                text: `Workflow not found: ${args.workflow_id}`,
+                text: `Workflow not found: ${roadmapWorkflowId}`,
               } as TextContent;
             }
             const roadmap = `
@@ -1912,7 +1917,7 @@ Estimated Time: ${workflow.implementation_hours} hours
 ROI: ${workflow.roi_estimate}
 
 STEPS:
-${workflow.steps.map((s, i) => `${i + 1}. ${s}`).join("\n")}
+${workflow.steps.map((s: string, i: number) => `${i + 1}. ${s}`).join("\n")}
 
 TOOLS REQUIRED:
 ${workflow.tools_used.join("\n")}
@@ -2040,7 +2045,7 @@ Always:
             return {
               type: "text",
               text:
-                templates[args.task] ||
+                templates[getArg("task")] ||
                 templates["default"] ||
                 "No template found",
             } as TextContent;
