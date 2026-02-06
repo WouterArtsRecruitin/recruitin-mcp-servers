@@ -1,0 +1,156 @@
+{
+  "generated_at": "2026-02-06T16:52:59.837Z",
+  "source_report": "recruitment-news-2026-01-12.html",
+  "total_articles": 163,
+  "top_10": [
+    {
+      "rank": 1,
+      "title": "HR-trends 2026: vier belangrijke rollen voor HR-managers · Salaris Vanmorgen",
+      "url": "https://www.salarisvanmorgen.nl/2026/01/02/partner-sd-worx-hr-trends-2026-vier-belangrijke-rollen-voor-hr-managers/",
+      "score": 55,
+      "recommended_platform": null
+    },
+    {
+      "rank": 2,
+      "title": "Technische Geneeskunde / Klinische Technologie | Medische wo opleiding - Bachelor",
+      "url": "https://www.utwente.nl/onderwijs/bachelor/opleidingen/technische-geneeskunde/",
+      "score": 30,
+      "recommended_platform": null
+    },
+    {
+      "rank": 3,
+      "title": "Hoe ervaren andere technische bedrijven de samenwerking met Strevon? - Strevon",
+      "url": "https://strevon.nl/kennisbank/voor-werkgevers/meestgesteldevragen/hoe-ervaren-andere-technische-bedrijven-de-samenwerking-met-strevon/",
+      "score": 30,
+      "recommended_platform": null
+    },
+    {
+      "rank": 4,
+      "title": "Onderhoud en automatisering in industriële werkplaatsen: hoe slimme keuzes productiviteit verhogen • Metaal Magazine",
+      "url": "https://www.metaalmagazine.nl/partners/onderhoud-en-automatisering-in-industriele-werkplaatsen-hoe-slimme-keuzes-productiviteit-verhogen/107731/",
+      "score": 30,
+      "recommended_platform": null
+    },
+    {
+      "rank": 5,
+      "title": "Werktuigbouwkunde | Bachelor - wo opleiding",
+      "url": "https://www.utwente.nl/onderwijs/bachelor/opleidingen/mechanical-engineering/",
+      "score": 30,
+      "recommended_platform": null
+    },
+    {
+      "rank": 6,
+      "title": "Mechanical Engineering / Werktuigbouwkunde | Master - wo opleiding",
+      "url": "https://www.utwente.nl/onderwijs/master/opleidingen/mechanical-engineering/",
+      "score": 30,
+      "recommended_platform": null
+    },
+    {
+      "rank": 7,
+      "title": "Industrieel Ontwerpen | Bachelor - wo opleiding",
+      "url": "https://www.utwente.nl/onderwijs/bachelor/opleidingen/industrial-design-engineering/",
+      "score": 30,
+      "recommended_platform": null
+    },
+    {
+      "rank": 8,
+      "title": "De bouwsteen van moderne technologie - Elektrotechniek - DIA Groep",
+      "url": "https://www.diagroep.nl/kennisbank/de-bouwsteen-van-moderne-technologie-elektrotechniek",
+      "score": 30,
+      "recommended_platform": null
+    },
+    {
+      "rank": 9,
+      "title": "Specialist elektrotechniek | Gilde Opleidingen",
+      "url": "https://www.gildeopleidingen.nl/opleidingen/specialist-elektrotechniek",
+      "score": 30,
+      "recommended_platform": null
+    },
+    {
+      "rank": 10,
+      "title": "Veranderende HR wet- en regelgeving vanaf 2026 - Trends in HR",
+      "url": "https://www.trendsinhr.nl/veranderende-hr-wet-en-regelgeving-vanaf-2026/",
+      "score": 30,
+      "recommended_platform": null
+    }
+  ],
+  "top_3_detailed": [
+    {
+      "title": "HR-trends 2026: vier belangrijke rollen voor HR-managers · Salaris Vanmorgen",
+      "url": "https://www.salarisvanmorgen.nl/2026/01/02/partner-sd-worx-hr-trends-2026-vier-belangrijke-rollen-voor-hr-managers/",
+      "description": "",
+      "source": "",
+      "scoring": {
+        "total_score": 55,
+        "breakdown": {
+          "thought_leadership": 100,
+          "technical": 0,
+          "recruitin_fit": 100,
+          "content_opportunity": 0
+        },
+        "matched_keywords": {
+          "thought_leadership": [
+            "trend"
+          ],
+          "technical": [],
+          "recruitin_fit": [
+            "salaris"
+          ],
+          "content_angles": []
+        }
+      },
+      "content_angles": [],
+      "best_angle": null
+    },
+    {
+      "title": "Technische Geneeskunde / Klinische Technologie | Medische wo opleiding - Bachelor",
+      "url": "https://www.utwente.nl/onderwijs/bachelor/opleidingen/technische-geneeskunde/",
+      "description": "",
+      "source": "",
+      "scoring": {
+        "total_score": 30,
+        "breakdown": {
+          "thought_leadership": 0,
+          "technical": 100,
+          "recruitin_fit": 0,
+          "content_opportunity": 0
+        },
+        "matched_keywords": {
+          "thought_leadership": [],
+          "technical": [
+            "technisch"
+          ],
+          "recruitin_fit": [],
+          "content_angles": []
+        }
+      },
+      "content_angles": [],
+      "best_angle": null
+    },
+    {
+      "title": "Hoe ervaren andere technische bedrijven de samenwerking met Strevon? - Strevon",
+      "url": "https://strevon.nl/kennisbank/voor-werkgevers/meestgesteldevragen/hoe-ervaren-andere-technische-bedrijven-de-samenwerking-met-strevon/",
+      "description": "",
+      "source": "",
+      "scoring": {
+        "total_score": 30,
+        "breakdown": {
+          "thought_leadership": 0,
+          "technical": 100,
+          "recruitin_fit": 0,
+          "content_opportunity": 0
+        },
+        "matched_keywords": {
+          "thought_leadership": [],
+          "technical": [
+            "technisch"
+          ],
+          "recruitin_fit": [],
+          "content_angles": []
+        }
+      },
+      "content_angles": [],
+      "best_angle": null
+    }
+  ]
+}
