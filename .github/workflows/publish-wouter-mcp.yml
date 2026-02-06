@@ -1,6 +1,7 @@
 name: Publish Wouter Skills Bundle MCP
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
   push:
@@ -14,17 +15,17 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
-      
+      - uses: actions/checkout@v4
+
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "18"
-      
+
       - name: Install dependencies
         run: |
           cd wouter-skills-bundle
-          npm ci
+          npm ci --ignore-scripts
       
       - name: Build
         run: |
