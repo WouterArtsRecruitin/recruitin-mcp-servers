@@ -8,10 +8,20 @@ const DATABASE_ID = '949d73d7816f4b35b2c806654ad0a3c4'; // Articles Database (cr
 async function upload() {
   console.log('📤 Uploading to LinkedIn Intelligence Hub (Database)...\n');
 
-  const data = JSON.parse(fs.readFileSync('reports/top-articles-2026-01-15.json'));
+  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+  const filePath = `reports/top-articles-${today}.json`;
+
+  if (!fs.existsSync(filePath)) {
+    console.error(`❌ Report not found: ${filePath}`);
+    process.exit(1);
+  }
+
+  const data = JSON.parse(fs.readFileSync(filePath));
   const top10 = data.top_10;
-  const weekNumber = 3;
-  const weekDate = '15 januari 2026';
+
+  const now = new Date();
+  const weekNumber = Math.ceil(((now - new Date(now.getFullYear(), 0, 1)) / 86400000 + new Date(now.getFullYear(), 0, 1).getDay() + 1) / 7);
+  const weekDate = now.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
 
   console.log(`📊 Uploading ${top10.length} articles from ${data.generated_at}\n`);
 
