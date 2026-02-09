@@ -3,79 +3,69 @@ import { Client } from '@notionhq/client';
 import fs from 'fs';
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
-const DATABASE_ID = '949d73d7816f4b35b2c806654ad0a3c4'; // Articles Database (created 2026-01-15)
+const DATABASE_ID = '2421f7a1ca0141b0994d3fafab3e6eb7'; // Content Calendar - Planning
 
 async function upload() {
   console.log('📤 Uploading to LinkedIn Intelligence Hub (Database)...\n');
 
-  const data = JSON.parse(fs.readFileSync('reports/top-articles-2026-01-15.json'));
+  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+  const filePath = `reports/top-articles-${today}.json`;
+
+  if (!fs.existsSync(filePath)) {
+    console.error(`❌ Report not found: ${filePath}`);
+    process.exit(1);
+  }
+
+  const data = JSON.parse(fs.readFileSync(filePath));
   const top10 = data.top_10;
-  const weekNumber = 3;
-  const weekDate = '15 januari 2026';
+
+  const now = new Date();
+  const weekNumber = Math.ceil(((now - new Date(now.getFullYear(), 0, 1)) / 86400000 + new Date(now.getFullYear(), 0, 1).getDay() + 1) / 7);
+  const weekDate = now.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
 
   console.log(`📊 Uploading ${top10.length} articles from ${data.generated_at}\n`);
 
-  // Upload each article as database item
+  let failCount = 0;
+
   for (let i = 0; i < top10.length; i++) {
     const article = top10[i];
+
+    const properties = {
+      'Titel': {
+        title: [{ text: { content: `${article.rank}. ${article.title}` } }]
+      },
+      'URL': { url: article.url },
+      'Score': { number: article.score },
+      'Rank': { number: article.rank },
+      'Week': {
+        rich_text: [{ text: { content: `Week ${weekNumber} - ${weekDate}` } }]
+      },
+      'Gebruikt': { checkbox: article.rank === 1 },
+      'Status': {
+        select: { name: article.rank === 1 ? 'Gebruikt' : 'Niet gebruikt' }
+      }
+    };
+
+    // Only add optional properties if they have values
+    if (article.best_angle) {
+      properties['Content Angle'] = { select: { name: article.best_angle } };
+    }
+    if (article.recommended_platform) {
+      properties['Platform'] = { select: { name: article.recommended_platform } };
+    }
 
     try {
       await notion.pages.create({
         parent: { database_id: DATABASE_ID },
-        properties: {
-          // REQUIRED: Title property (assuming "Titel" or "Title")
-          'Titel': {
-            title: [{ text: { content: `${article.rank}. ${article.title}` } }]
-          },
-
-          // URL property (assuming "URL" or "Link")
-          'URL': {
-            url: article.url
-          },
-
-          // Score property (assuming "Score" number field)
-          'Score': {
-            number: article.score
-          },
-
-          // Rank property (assuming "Rank" number field)
-          'Rank': {
-            number: article.rank
-          },
-
-          // Week property (assuming "Week" text or number field)
-          'Week': {
-            rich_text: [{ text: { content: `Week ${weekNumber} - ${weekDate}` } }]
-          },
-
-          // Best angle property (assuming "Content Angle" select or text)
-          'Content Angle': article.best_angle ? {
-            select: { name: article.best_angle }
-          } : undefined,
-
-          // Platform recommendation (assuming "Platform" select or text)
-          'Platform': article.recommended_platform ? {
-            select: { name: article.recommended_platform }
-          } : undefined,
-
-          // Used for content status (assuming "Gebruikt" checkbox)
-          'Gebruikt': {
-            checkbox: article.rank === 1 // Top article marked as used
-          },
-
-          // Status property (assuming "Status" select)
-          'Status': {
-            select: { name: article.rank === 1 ? 'Gebruikt' : 'Niet gebruikt' }
-          }
-        }
+        properties
       });
 
       console.log(`✅ ${article.rank}. ${article.title.substring(0, 60)}...`);
 
     } catch (error) {
+      failCount++;
       console.error(`❌ Failed to upload article ${article.rank}: ${error.message}`);
 
-      // If property doesn't exist, show helpful error
       if (error.code === 'validation_error') {
         console.log(`\n⚠️  Property validation error. Database properties may be named differently.`);
         console.log(`   Run: node find-notion-databases.js to see actual property names`);
@@ -83,7 +73,15 @@ async function upload() {
     }
   }
 
-  console.log('\n✅ TOP 10 UPLOADED TO NOTION DATABASE!');
+  if (failCount === top10.length) {
+    console.error(`\n❌ ALL ${top10.length} uploads failed!`);
+    process.exit(1);
+  }
+
+  console.log(`\n✅ ${top10.length - failCount}/${top10.length} articles uploaded to Notion`);
+  if (failCount > 0) {
+    console.log(`⚠️  ${failCount} articles failed`);
+  }
   console.log(`📄 Check: https://www.notion.so/Weekly-Top-10-News-${DATABASE_ID.replace(/-/g, '')}`);
 }
 
@@ -93,4 +91,5 @@ upload().catch(err => {
     console.log('\n🔧 Share page with integration first:');
     console.log('Notion → Page → ... → Connections → Add integration');
   }
+  process.exit(1);
 });
