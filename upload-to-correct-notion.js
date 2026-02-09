@@ -3,7 +3,7 @@ import { Client } from '@notionhq/client';
 import fs from 'fs';
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
-const DATABASE_ID = '949d73d7816f4b35b2c806654ad0a3c4'; // Articles Database (created 2026-01-15)
+const DATABASE_ID = '2421f7a1ca0141b0994d3fafab3e6eb7'; // Content Calendar - Planning
 
 async function upload() {
   console.log('📤 Uploading to LinkedIn Intelligence Hub (Database)...\n');
