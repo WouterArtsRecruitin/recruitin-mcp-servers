@@ -25,7 +25,7 @@ Add these 3 secrets:
 
 #### 1. BRAVE_API_KEY
 - **Name**: `BRAVE_API_KEY`
-- **Value**: `BSARdxCQWTc2qwf41D9nweSyzfBzf6B`
+- **Value**: *(set via GitHub Secrets)*
 - **Used by**: Daily scraping + weekly article selection
 
 #### 2. ANTHROPIC_API_KEY
@@ -36,7 +36,7 @@ Add these 3 secrets:
 
 #### 3. NOTION_API_KEY
 - **Name**: `NOTION_API_KEY`
-- **Value**: `ntn_n921362306174F3yoW5yeNwFGnruLy9JiB0YV2GANOAe3c`
+- **Value**: *(set via GitHub Secrets)*
 - **Used by**: Weekly Notion database upload
 
 ### Verification

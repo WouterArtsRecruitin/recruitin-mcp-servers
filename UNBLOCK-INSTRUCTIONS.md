@@ -37,7 +37,7 @@ Or open "Weekly Top 10 News" page and scroll to the "Articles Database" section.
 ### Step 3: Add the Integration
 
 1. Click **"Add connection"** or **"Connect to"**
-2. Search for your integration (the one using token `ntn_n921362306174F3yoW5yeNwFGnruLy9JiB0YV2GANOAe3c`)
+2. Search for your Notion integration
 3. Select the integration from the list
 4. Grant **"Edit"** permissions (required for creating pages)
 
