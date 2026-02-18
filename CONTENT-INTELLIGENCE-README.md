@@ -166,7 +166,7 @@ node generate-news-report-now.js
 
 ### For Automation (GitHub Actions)
 **Add as GitHub Secrets**:
-1. `BRAVE_API_KEY` = `BSARdxCQWTc2qwf41D9nweSyzfBzf6B`
+1. `BRAVE_API_KEY` = *(set via GitHub Secrets)*
 2. `ANTHROPIC_API_KEY` = `sk-ant-api03-[YOUR_KEY]`
 
 **Where**: GitHub repo → Settings → Secrets → Actions
