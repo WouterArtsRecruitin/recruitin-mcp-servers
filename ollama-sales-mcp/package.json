@@ -1,0 +1,16 @@
+{
+  "name": "ollama-sales-mcp",
+  "version": "1.0.0",
+  "description": "Local LLM tools for recruitment lead generation, email processing and sales acquisition",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

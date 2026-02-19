@@ -61,6 +61,38 @@
         "OLLAMA_BASE_URL": "http://localhost:11434",
         "OLLAMA_DEFAULT_MODEL": "llama3.2"
       }
+    },
+    "ollama-sales": {
+      "command": "node",
+      "args": ["./ollama-sales-mcp/index.js"],
+      "env": {
+        "OLLAMA_BASE_URL": "http://localhost:11434",
+        "OLLAMA_DEFAULT_MODEL": "llama3.2"
+      }
+    },
+    "ollama-intelligence": {
+      "command": "node",
+      "args": ["./ollama-intelligence-mcp/index.js"],
+      "env": {
+        "OLLAMA_BASE_URL": "http://localhost:11434",
+        "OLLAMA_DEFAULT_MODEL": "llama3.2"
+      }
+    },
+    "ollama-content": {
+      "command": "node",
+      "args": ["./ollama-content-mcp/index.js"],
+      "env": {
+        "OLLAMA_BASE_URL": "http://localhost:11434",
+        "OLLAMA_DEFAULT_MODEL": "llama3.2"
+      }
+    },
+    "jobdigger": {
+      "command": "node",
+      "args": ["./jobdigger-mcp/index.js"],
+      "env": {
+        "OLLAMA_BASE_URL": "http://localhost:11434",
+        "OLLAMA_DEFAULT_MODEL": "llama3.2"
+      }
     }
   }
 }

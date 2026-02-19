@@ -177,7 +177,7 @@ Ranked Candidates
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-pipedrive"],
       "env": {
-        "PIPEDRIVE_API_KEY": "09982bf303e355d84fb62e25191c6c39a3683df5"
+        "PIPEDRIVE_API_KEY": "${PIPEDRIVE_API_KEY}"
       }
     },
     "apollo": {
