@@ -1,0 +1,16 @@
+{
+  "name": "ollama-intelligence-mcp",
+  "version": "1.0.0",
+  "description": "Local LLM tools for labour market intelligence, competitor analysis and target audience profiling",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
