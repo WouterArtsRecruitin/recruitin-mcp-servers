@@ -43,7 +43,7 @@ export class APKReportGenerator {
   async fetchAPKDataFromPipedrive(dealId: string, apiToken: string): Promise<APKData> {
     try {
       const response = await fetch(`https://recruitinbv.pipedrive.com/api/v1/deals/${dealId}?api_token=${apiToken}`);
-      const result = await response.json();
+      const result = await response.json() as any;
       
       if (!result.success) {
         throw new Error(`Failed to fetch deal data: ${result.error}`);
@@ -73,7 +73,7 @@ export class APKReportGenerator {
   private async getPersonEmail(personId: number, apiToken: string): Promise<string> {
     try {
       const response = await fetch(`https://recruitinbv.pipedrive.com/api/v1/persons/${personId}?api_token=${apiToken}`);
-      const result = await response.json();
+      const result = await response.json() as any;
       return result.success && result.data.email ? result.data.email[0].value : '';
     } catch {
       return '';
@@ -281,7 +281,7 @@ Met ${data.aantal_vacatures} vacatures kan verbetering leiden tot:
         body: JSON.stringify(updateData)
       });
 
-      const result = await response.json();
+      const result = await response.json() as any;
       return result.success === true;
     } catch (error) {
       console.error('Failed to update APK scores:', error);

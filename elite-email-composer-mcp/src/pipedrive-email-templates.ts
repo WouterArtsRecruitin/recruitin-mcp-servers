@@ -59,7 +59,7 @@ export class PipedriveEmailTemplates {
           continue;
         }
 
-        const result = await response.json();
+        const result = await response.json() as any;
         if (result.success) {
           createdTemplates.push({
             id: result.data.id,

@@ -65,10 +65,10 @@ export class IntelligentDocumentProcessor {
     ]);
 
     const [deal, notes, activities, files] = await Promise.all([
-      dealResponse.json(),
-      notesResponse.json(),
-      activitiesResponse.json(),
-      filesResponse.json()
+      dealResponse.json() as any,
+      notesResponse.json() as any,
+      activitiesResponse.json() as any,
+      filesResponse.json() as any
     ]);
 
     if (!deal.success) {
@@ -80,13 +80,13 @@ export class IntelligentDocumentProcessor {
     
     if (deal.data.person_id) {
       const personResponse = await fetch(`https://recruitinbv.pipedrive.com/api/v1/persons/${deal.data.person_id}?api_token=${apiToken}`);
-      const personData = await personResponse.json();
+      const personData = await personResponse.json() as any;
       if (personData.success) person = personData.data;
     }
     
     if (deal.data.org_id) {
       const orgResponse = await fetch(`https://recruitinbv.pipedrive.com/api/v1/organizations/${deal.data.org_id}?api_token=${apiToken}`);
-      const orgData = await orgResponse.json();
+      const orgData = await orgResponse.json() as any;
       if (orgData.success) organization = orgData.data;
     }
 

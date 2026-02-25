@@ -999,11 +999,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             
             // Extract recipient info from the analysis
             const dealResponse = await fetch(`https://recruitinbv.pipedrive.com/api/v1/deals/${deal_id}?api_token=${api_token}`);
-            const dealData = await dealResponse.json();
+            const dealData = await dealResponse.json() as any;
             
             if (dealData.success && dealData.data.person_id) {
               const personResponse = await fetch(`https://recruitinbv.pipedrive.com/api/v1/persons/${dealData.data.person_id}?api_token=${api_token}`);
-              const personData = await personResponse.json();
+              const personData = await personResponse.json() as any;
               
               if (personData.success && personData.data.email?.length > 0) {
                 try {

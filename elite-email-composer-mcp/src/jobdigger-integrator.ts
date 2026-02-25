@@ -321,7 +321,7 @@ export class JobDiggerIntegrator extends PipedriveIntegrator {
         throw new Error(`Pipedrive API error: ${response.status} ${response.statusText} - ${errorText}`);
       }
 
-      const result = await response.json();
+      const result = await response.json() as any;
       
       if (result.success) {
         // Move to JobDigger Email Sequence Ready stage
@@ -334,7 +334,7 @@ export class JobDiggerIntegrator extends PipedriveIntegrator {
             body: JSON.stringify({ stage_id: this.EMAIL_SEQUENCE_READY_STAGE_ID })
           });
           
-          const stageResult = await stageUpdateResponse.json();
+          const stageResult = await stageUpdateResponse.json() as any;
           
           if (stageResult.success) {
             console.log(`✅ JobDigger deal moved to stage ${this.EMAIL_SEQUENCE_READY_STAGE_ID} - ready for tech automation!`);

@@ -351,7 +351,7 @@ export class PipedriveIntegrator {
         throw new Error(`Pipedrive API error: ${response.status} ${response.statusText} - ${errorText}`);
       }
 
-      const result = await response.json();
+      const result = await response.json() as any;
       
       if (result.success) {
         // AUTOMATISCH: Move deal naar "Email Sequence Ready" stage na email generatie
@@ -368,7 +368,7 @@ export class PipedriveIntegrator {
             })
           });
           
-          const stageResult = await stageUpdateResponse.json();
+          const stageResult = await stageUpdateResponse.json() as any;
           
           if (stageResult.success) {
             console.log('✅ Deal automatically moved to Email Sequence Ready - automation will start!');
