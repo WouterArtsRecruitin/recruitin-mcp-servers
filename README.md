@@ -151,6 +151,26 @@ https://notion.so/myworkspace/abc123def456?v=...
 
 ---
 
+## 🎮 **Pixel Agents (VS Code Extensie)**
+
+Dit project bevat een aanbeveling voor de [Pixel Agents](https://marketplace.visualstudio.com/items?itemName=pablodelucca.pixel-agents) VS Code extensie. Deze extensie zet je AI coding agents (zoals Claude Code) om in geanimeerde pixel art karakters die werken in een virtueel kantoor.
+
+### **Installatie**
+1. Open dit project in VS Code
+2. VS Code zal automatisch voorstellen om Pixel Agents te installeren (via `.vscode/extensions.json`)
+3. Of installeer handmatig:
+   - Open VS Code Extensions (`Ctrl+Shift+X`)
+   - Zoek naar **"Pixel Agents"** (door pablodelucca)
+   - Klik **Install**
+   - Of via CLI: `code --install-extension pablodelucca.pixel-agents`
+
+### **Gebruik**
+- Open het Pixel Agents paneel (onderin, naast je terminal)
+- Klik **"+ Agent"** om een nieuwe Claude Code terminal te starten
+- Je ziet een pixel karakter dat reageert op wat de agent doet (schrijven, lezen, commands uitvoeren)
+
+---
+
 ## 🔧 **Development**
 
 ### **Install Dependencies**
