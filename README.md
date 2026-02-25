@@ -153,7 +153,7 @@ https://notion.so/myworkspace/abc123def456?v=...
 
 ## 🎮 **Pixel Agents (VS Code Extensie)**
 
-Dit project bevat een aanbeveling voor de [Pixel Agents](https://marketplace.visualstudio.com/items?itemName=pablodelucca.pixel-agents) VS Code extensie. Deze extensie zet je AI coding agents (zoals Claude Code) om in geanimeerde pixel art karakters die werken in een virtueel kantoor.
+Dit project bevat een aanbeveling voor de [Pixel Agents](https://marketplace.visualstudio.com/items?itemName=pablodelucca.pixel-agents) VS Code extensie ([onze fork](https://github.com/WouterArtsRecruitin/pixel-agents)). Deze extensie zet je AI coding agents (zoals Claude Code) om in geanimeerde pixel art karakters die werken in een virtueel kantoor.
 
 ### **Installatie**
 1. Open dit project in VS Code
