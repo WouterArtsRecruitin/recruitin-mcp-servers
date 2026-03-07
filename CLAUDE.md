@@ -1,6 +1,6 @@
 # CLAUDE.md — Recruitin B.V.
 # Master AI Configuration — Skills Bundle v5.0
-# Bijgewerkt: 2026-03-07
+# Bijgewerkt: 2026-03-08
 
 ## IDENTITEIT
 Naam: Wouter Arts | DGA Recruitin B.V.
@@ -106,6 +106,7 @@ Bij elke complexe opdracht, bied:
 | Hosting static | Netlify |
 | CDN | Cloudflare |
 | Database | Supabase (PostgreSQL) |
+| Auth | Supabase Auth |
 | CRM | Pipedrive |
 | Forms UX | Typeform |
 | Forms betalingen | Jotform |
@@ -115,7 +116,7 @@ Bij elke complexe opdracht, bied:
 
 ## ACTIEVE PROJECTEN
 - kandidatentekort.nl — Lead gen vacature-analyse (V6 productie)
-- JobDigger Pipeline — 799k deals, 519k stuck Stage 2
+- JobDigger Pipeline — opgelost, pipeline actief
 - Meta Campaigns — 15 audiences, 20 ad varianten
 - RecruitmentAPK — Assessment tool + A/B test
 - LinkedIn Expert Automation — 10k MRR target
