@@ -3,7 +3,7 @@
 // Render Account Info & Manual Setup Helper
 import https from 'https';
 
-const RENDER_API_TOKEN = 'rnd_vGJvIxrJzJO1k3JlHSU7clSOIZvj';
+const RENDER_API_TOKEN = process.env.RENDER_API_TOKEN;
 
 function makeRenderRequest(method, endpoint, data = null) {
   return new Promise((resolve, reject) => {
@@ -21,11 +21,7 @@ function makeRenderRequest(method, endpoint, data = null) {
 
     const req = https.request(options, (res) => {
       let responseData = '';
-
-      res.on('data', (chunk) => {
-        responseData += chunk;
-      });
-
+      res.on('data', (chunk) => { responseData += chunk; });
       res.on('end', () => {
         try {
           const parsed = JSON.parse(responseData);
@@ -36,14 +32,8 @@ function makeRenderRequest(method, endpoint, data = null) {
       });
     });
 
-    req.on('error', (e) => {
-      reject(e);
-    });
-
-    if (data) {
-      req.write(JSON.stringify(data));
-    }
-
+    req.on('error', (e) => { reject(e); });
+    if (data) { req.write(JSON.stringify(data)); }
     req.end();
   });
 }
@@ -52,11 +42,9 @@ async function checkRenderAccount() {
   console.log('🔍 Checking Render account details...\n');
 
   try {
-    // Check account info
     const userInfo = await makeRenderRequest('GET', '/v1/owners');
     console.log('Account Info:', JSON.stringify(userInfo.data, null, 2));
 
-    // Check existing services
     const services = await makeRenderRequest('GET', '/v1/services');
     console.log('\nExisting Services:', JSON.stringify(services.data, null, 2));
 
